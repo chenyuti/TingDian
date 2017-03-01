@@ -1,0 +1,673 @@
+<!-- 主页   -->
+<content>
+    <page id="homePageID" >
+        <lua name="homePage.lua" url="res://homePage.lua" />
+        
+        <group size="fill,fill" >
+        	<!-- 小左边 -->
+	        <group size="pageWidth*25%,fill" orientation="vertical" background="#413f44" gravity="left" >
+	            <group size="fill,wrap" >
+	                <item class="ImageButton" size="wrap,wrap" imageSize="20,20" padding="10,10,10,0" image="res://icon_setting.png" onClick="onMySetting(page)" />
+	                <item class="Label" size="wrap,wrap" fontSize="14" fontColor="#ffffff" margin="0,10,0,0" label="" id="today_ID" />  
+	            </group>
+	            
+	            <group size="fill,wrap" orientation="vertical" margin="0,20,0,20" >
+		            <item class="Label" size="wrap,wrap" fontSize="14" fontColor="#ffffff" gravity="center_horizontal" label="" id="user_nameID" />
+		            <item class="Label" size="wrap,wrap" fontSize="14" fontColor="#ffffff" gravity="center_horizontal" label="" id="user_hallID" margin="10,0,10,0" />
+		            <item class="Button" size="80,30" fontSize="14" fontColor="#ffffff" background="#8fc320" cornerRadius="3" gravity="center_horizontal" margin="20,10,20,0" label="工号退出" onClick="onLoginOut(page)" />
+	            </group>
+	            
+	            <group field="ScrollView" size="fill,wrap" orientation="vertical" >
+	                
+	            	<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_service_unselected.png" selectedImage="res://icon_service_selected.png" margin="35,0,0,0" space="10" label="客户服务" id="btn_serviceID" onClick="onLeftHandle(page,this,'service')" />
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" />
+	       		
+	       			<!-- 
+	            	<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_mobile_unselected.png" selectedImage="res://icon_mobile_selected.png" margin="35,0,0,0" space="20" label="4G靓机" id="btn_purchaseID" onClick="onLeftHandle(page,this,'purchase')" />
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" />
+	       			 -->
+	       			      <!-- 新增 已办优惠查询 -->
+	       			<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_meal_unselected.png" selectedImage="res://icon_meal_selected.png" margin="35,0,0,0" space="10" label="免鉴权业务" id="btn_offersID" onClick="onLeftHandle(page,this,'offers')" />
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" />
+	       		 		
+	           	 	<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_meal_unselected.png" selectedImage="res://icon_meal_selected.png" margin="35,0,0,0" space="10" label="4G套餐" id="btn_mealID" onClick="onLeftHandle(page,this,'meal')" hidden="true"/>
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" hidden="true" />
+	       		
+	            	<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_cover_unselected.png" selectedImage="res://icon_cover_selected.png" margin="35,0,0,0" space="10" label="家宽覆盖查询" id="btn_coverID" onClick="onLeftHandle(page,this,'cover')" />
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" />
+	       			
+	           	 	<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_other_unselected.png" selectedImage="res://icon_other_selected.png" margin="35,0,0,0" space="10" label="其他业务" id="btn_otherID" onClick="onLeftHandle(page,this,'other')" />
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" />
+	       		
+	       			<!-- 
+	            	<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_diary_unselected.png" selectedImage="res://icon_diary_selected.png" margin="35,0,0,0" space="20" label="营销日记" id="btn_diaryID" onClick="onLeftHandle(page,this,'diary')" />
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" />
+	       			       		
+	            	<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_chance_unselected.png" selectedImage="res://icon_chance_selected.png" margin="35,0,0,0" space="20" label="营销机会" id="btn_chanceID" onClick="onLeftHandle(page,this,'chance')" />
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" />
+	       			 -->	       		
+	       			       		
+	           		<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_feedback_unselected.png" selectedImage="res://icon_feedback_selected.png" margin="35,0,0,0" space="10" label="系统反馈" id="btn_feedbackID" onClick="onLeftHandle(page,this,'feedback')" />
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" />
+	       		
+	           		<item class="ImageButton" size="wrap,wrap" imageSize="25,25" fontSize="16" fontColor="#ffffff" selectedFontColor="#8fc320" image="res://icon_news_unselected.png" selectedImage="res://icon_news_selected.png" margin="35,0,0,0" space="10" label="消息盒子" id="btn_newsID" onClick="onLeftHandle(page,this,'news')" />
+	       			<item class="Line" size="fill,2" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="20,15,20,15" />
+	       		
+        			<item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="20,0,20,10" label="本次服务已完成" onClick="onCustomerQuit(page)" />
+				
+					<item class="Label" size="fill,wrap" fontSize="12" fontColor="#ffffff" textAlignment="center" gravity="bottom" margin="0,0,0,5" label="" id="app_versionID" />
+	       		</group>
+	        
+	        </group>
+        	
+	        <!-- 大右边 -->
+	        <group size="fill,fill" orientation="vertical" >
+	            
+	            <!-- 客户服务 -->
+		        <group size="fill,fill" orientation="vertical" hidden="true" id="group_serviceID" >
+		            <group size="fill,50" background="#8fc320" padding="20,0,20,0" >
+			            <group size="wrap,40" background="#ffffff" gravity="center" >
+			                <item class="Label" size="wrap,wrap" label="现场查询" fontSize="16" fontColor="#8fc320" selectedFontColor="#8fc320" gravity="center_vertical" margin="40,0,40,0" id="" onClick="" /> 
+			            </group>
+		            </group>
+		            
+	        		<group size="fill,fill" orientation="absolute" >
+	        		    
+	        		    <!-- 客户服务 -->
+			            <group field="ScrollView" size="fill,wrap" orientation="vertical" >
+			                <!-- 现场查询 -->
+			                <group size="fill,wrap" orientation="vertical" >
+					            <group size="fill,wrap" margin="0,15,0,15" >
+				                    <item class="TextField" size="pageWidth*46%,40" placeHolder="输入手机号" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" textAlignment="center" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" maxLength="11" inputType="number" gravity="center" id="customer_mobileID" />
+					            </group>
+					            
+					            <group size="fill,30" >
+						            <group size="pageWidth*46%,30" gravity="center" >
+						                <item class="Button" size="pageWidth*10%,30" fontSize="14" fontColor="#000000" selectedFontColor="#8fc320" textAlignment="center" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" margin="0,0,pageWidth*2%,0" label="短信验证码" id="validate_smsID" onClick="onValidateSelected(page,this,'sms')" />
+						                <item class="Button" size="pageWidth*10%,30" fontSize="14" fontColor="#000000" selectedFontColor="#8fc320" textAlignment="center" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" margin="0,0,pageWidth*2%,0" label="服务密码" id="validate_serviceID" onClick="onValidateSelected(page,this,'service')" />
+						                <item class="Button" size="pageWidth*10%,30" fontSize="14" fontColor="#000000" selectedFontColor="#8fc320" textAlignment="center" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" margin="0,0,pageWidth*2%,0" label="本人凭证件" id="validate_identificationID" onClick="onValidateSelected(page,this,'identification')" />
+						                <item class="Button" size="pageWidth*10%,30" fontSize="14" fontColor="#000000" selectedFontColor="#8fc320" textAlignment="center" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" label="有效证件" id="validate_documentID" onClick="onValidateSelected(page,this,'document')" />
+						            </group>
+					            </group>
+					            
+					            <group size="fill,wrap" margin="0,15,0,0" hidden="false" id="view_smsID" > 
+						            <group size="pageWidth*46%,wrap" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" gravity="center" >
+					                    <item class="TextField" size="pageWidth*36%,40" placeHolder="输入短信码" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" maxLength="6" inputType="number" textAlignment="center" gravity="left" id="sms_numberID" />
+	                					<item class="Button" size="pageWidth*10%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" disabledBackground="#aaaaaa" disabled="false" textAlignment="center" cornerRadius="3" gravity="right" label="免费获取" id="count_timeID" onClick="onObtain(page)" />
+						            </group>
+					            </group>
+					            					            
+					            <group size="fill,wrap" margin="0,15,0,0" hidden="true" id="view_serviceID" >
+						            <group size="pageWidth*46%,wrap" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" gravity="center" >
+					                    <item class="TextField" size="fill,40" placeHolder="输入服务密码" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" minLength="6" maxLength="8" inputType="password" textAlignment="center" id="service_numberID" />
+						            </group>
+					            </group>
+					            
+					            <group size="fill,wrap" margin="0,15,0,0" hidden="true" id="view_idcardID" >
+						            <group size="pageWidth*46%,wrap" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" gravity="center" >
+					                    <item class="TextField" size="fill,40" placeHolder="输入身份证号码" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" maxLength="18" textAlignment="center" id="idcard_numID" />
+						                <item class="ImageButton" size="40,40" imageSize="30,30" gravity="right|center_vertical" image="res://icon_scanning_grey.png" onClick="onBluetoothScanning(page,'idcard')" />
+						            </group>
+					            </group>
+					            					            
+					            <group size="fill,wrap" margin="0,15,0,0" hidden="true" id="view_documentID" >
+						            <group size="pageWidth*46%,wrap" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" gravity="center" >
+						                <group size="pageWidth*15%,40" orientation="vertical" background="#8fc320" cornerRadius="3" >
+							                <group class="DropList" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" margin="0,0,5,0" label="请选择证件类型" id="selected_documentID" onValueChange="onValueChange(page,this)" >
+										    	<item value="IdCard" label="身份证" />
+											    <item value="SoldierID" label="士兵证" />
+											    <item value="PolicePaper" label="警官证" />
+											    <item value="Passport" label="护照" />
+											    <item value="HuKouBu" label="户口簿" />
+											    <item value="HKIdCard" label="港澳证" />
+											    <item value="IdVipCard" label="VIP卡" />
+											    <item value="GongZhang" label="公章" />
+											    <item value="TempId" label="临时身份证" />
+											    <item value="DriverIC" label="驾驶证" />
+											    <item value="PLA" label="军官证" />
+											    <item value="IdTypeJSX" label="单位介绍信" />
+											    <item value="StudentID" label="学生证" />
+											    <item value="TeacherID" label="教师证" />
+											    <item value="FuYuanZheng" label="复员证" />
+											    <item value="ZanZhuZheng" label="暂住证" />
+											    <item value="RetNative" label="还乡证" />
+											    <item value="OtherLicence" label="其他" />
+											    <item value="BusinessLicence" label="营业执照" />
+											    <item value="UnitID" label="单位证明" />
+											    <item value="CorpLicence" label="事业单位法人证书" />
+											    <item value="OrgaLicence" label="社会团体法人登记证书" />									    
+							                </group>
+					                		<item class="Image" size="16,16" gravity="right|center_vertical" margin="0,0,5,0" image="res://icon_go_down_white.png" />
+						                </group>
+							            <group size="fill,wrap" hidden="true" id="group_validIDCardID" >
+					   						<item class="Label" size="fill,40" fontSize="16" fontColor="#aaaaaa" textAlignment="center" padding="5,0,5,0" label="" id="valid_idcardNumID" />
+							                <item class="ImageButton" size="40,40" imageSize="30,30" gravity="right|center_vertical" image="res://icon_scanning_grey.png" onClick="onBluetoothScanning(page,'valid')" />
+							            </group>
+							            <group size="fill,wrap" hidden="true" id="group_validOtherID" >
+						                    <item class="TextField" size="fill,40" placeHolder="请输入证件号码" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" textAlignment="center" padding="5,0,5,0" id="valid_otherNumID" />
+							            </group>						                						                
+						            </group>
+					            </group>
+					            
+					            <group size="fill,wrap" margin="0,60,0,0" >
+					                <item class="Button" size="pageWidth*46%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" textAlignment="center" cornerRadius="3" gravity="center" label="查询业务" onClick="onCustomerService(page)" />
+					            </group>
+					            
+				            </group>
+			            </group>
+			            
+			            <group size="wrap,wrap" gravity="center" >
+			                <item class="Image" size="170,170" image="res://bg_logo.png" />
+			            </group>
+		        	</group>
+		        </group>
+		        
+		        <!-- 4G套餐 -->
+		        <group size="fill,fill" orientation="vertical" hidden="true" id="group_mealID" >
+		            <group size="fill,50" background="#8fc320" padding="20,0,20,0" >
+			            <group size="wrap,40" background="#ffffff" gravity="center" >
+			                <item class="Button" size="pageWidth*15%,40" fontSize="16" fontColor="#aaaaaa" selectedFontColor="#8fc320" textAlignment="center" gravity="center_vertical" label="飞享套餐" id="fly_mealID" onClick="on4GMealType(page,this,'fly')" /> 
+				       		<item class="Line" size="1,fill" lineColor="#828183" lineWidth="1" background="clear" />
+			                <item class="Button" size="pageWidth*15%,40" fontSize="16" fontColor="#aaaaaa" selectedFontColor="#8fc320" textAlignment="center" gravity="center_vertical" label="手机流量套餐" onClick="on4GMealType(page,this,'flow')" /> 
+				       		<item class="Line" size="1,fill" lineColor="#828183" lineWidth="1" background="clear" />
+			                <item class="Button" size="pageWidth*15%,40" fontSize="16" fontColor="#aaaaaa" selectedFontColor="#8fc320" textAlignment="center" gravity="center_vertical" label="流量叠加包" onClick="on4GMealType(page,this,'overlying')" /> 
+				       		<!-- 
+				       		<item class="Line" size="1,fill" lineColor="#828183" lineWidth="1" background="clear" />
+			                <item class="Button" size="pageWidth*15%,40" fontSize="16" fontColor="#aaaaaa" selectedFontColor="#8fc320" textAlignment="center" gravity="center_vertical" label="流量王套餐" onClick="on4GMealType(page,this,'king')" /> 
+				       		 -->
+			            </group>
+		            </group>
+		            
+		            <group field="ScrollView" size="fill,wrap" orientation="vertical" >
+			            <group size="pageWidth*60%,wrap" orientation="vertical" gravity="center_horizontal" >
+							<group size="fill,50" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" margin="0,15,0,15" padding="10,0,10,0" >
+			                    <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="" id="meal_mobileID" />
+			                    <item class="Label" size="wrap,wrap" fontSize="12" fontColor="#000000" textAlignment="center" gravity="center_vertical" margin="50,0,0,0" label="" id="use_mealNameID" />
+				            </group>
+				            
+				            <!-- 飞享套餐 -->
+				            <group size="fill,wrap" orientation="vertical" hidden="false" id="group_flyID" >
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="选择套餐档次:" />
+								<group size="fill,wrap" orientation="vertical" gravity="center_horizontal" >
+								    <group size="fill,wrap" margin="0,0,0,10" >
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="38元" onClick="onFlyMeal(page,this,'38')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="48元" onClick="onFlyMeal(page,this,'48')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="58元" onClick="onFlyMeal(page,this,'58')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="88元" onClick="onFlyMeal(page,this,'88')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="138元" onClick="onFlyMeal(page,this,'138')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="158元" onClick="onFlyMeal(page,this,'158')" />
+								    </group>
+								    <group size="fill,wrap" >
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="188元" onClick="onFlyMeal(page,this,'188')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="238元" onClick="onFlyMeal(page,this,'238')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="268元" onClick="onFlyMeal(page,this,'268')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="288元" onClick="onFlyMeal(page,this,'288')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="338元" onClick="onFlyMeal(page,this,'338')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="588元" onClick="onFlyMeal(page,this,'588')" />
+								    </group>
+								</group>
+								
+				                <item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" textAlignment="center" cornerRadius="3" margin="0,30,0,30" label="下一步" onClick="onMealNextStep(page,'fly')" />
+								
+								<item class="Image" size="pageWidth*60%,pageWidth*80%" margin="0,0,0,10" image="res://icon_flyMealPostage.png" />
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="温馨提示:" />
+				                <group size="fill,wrap" orientation="vertical" margin="0,0,0,10" >
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="1、套餐包含分钟数不含港澳台，不含视频通话主叫；被叫免费范围也不含港澳台，但含视频通话被叫。58和88元档次可分别享受赠送12个月的国内主叫50分钟和80分钟数。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="2、38元档次赠送流量为省内闲时流量（闲时流量时段范围为23:00-8:00）；58-588元档次赠送流量为省内通用（2G/3G/4G）流量。均仅限省内使用，可享受12个月优惠赠送。48元档次不享受此次流量升级优惠。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="3、套餐外流量资费标准：上网不足50元按0.29元/M收费，每达50元自动赠送827M国内流量（不适应于港澳台）。" />
+				                </group>		            		            
+				            </group>
+				            
+				            <!-- 手机流量套餐 -->		            		            
+				            <group size="fill,wrap" orientation="vertical" hidden="false" id="group_flowID" >
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="选择手机流量套餐:" />
+								<group size="fill,wrap" orientation="vertical" gravity="center_horizontal" >
+								    <group size="fill,wrap" margin="0,0,0,10" >
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="5元" onClick="onFlowMeal(page,this,'GPRS5')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="10元" onClick="onFlowMeal(page,this,'GPRSN10')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="20元" onClick="onFlowMeal(page,this,'GPRS20')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="30元" onClick="onFlowMeal(page,this,'GPRS30')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="40元" onClick="onFlowMeal(page,this,'GPRS40')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="50元" onClick="onFlowMeal(page,this,'GPRS50')" />
+								    </group>
+								    <group size="fill,wrap" >
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="70元" onClick="onFlowMeal(page,this,'GPRS70')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="100元" onClick="onFlowMeal(page,this,'GPRS100')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="130元" onClick="onFlowMeal(page,this,'GPRS130')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="180元" onClick="onFlowMeal(page,this,'GPRS180')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="280元" onClick="onFlowMeal(page,this,'GPRS280')" />
+								    </group>
+								</group>
+								
+				                <item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" textAlignment="center" cornerRadius="3" margin="0,30,0,30" label="下一步" onClick="onMealNextStep(page,'flow')" />
+				                						
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="资费详情:" />
+								<item class="Image" size="pageWidth*60%,pageWidth*66%" margin="0,0,0,10" image="res://icon_flowMealPostage.png" />
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="温馨提示:" />
+				                <group size="fill,wrap" orientation="vertical" margin="0,0,0,10" >
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="1、使用范围：上述套餐包含的流量为国内2G/3G/4G流量（不含台港澳），流量不区分省内、省外，不区分2G、3G、4G网络。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="2、首次办理立即生效，变更、退订下一月结日生效（全球通1日）。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="3、同一帐期不能同时办理两个或以上档次的手机流量套餐（包括月套餐、季度包、半年包、年包），即不同档次手机流量套餐只能办理一个。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="4、订购首月规则：首次办理，扣取全月租，赠送全部流量。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="5、流量封顶规则：超套餐外流量费用达到500元后不再扣费；另外，超套餐外流量达到15G自动关闭上网功能，如需继续使用，请办理叠加包恢复。当月总流量达到50G系统自动关闭上网功能，下一月结日自动恢复（全球通1日）。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="6、套餐内所含的流量均可享受流量不清零服务，当月未用完部分结转至下月使用（不含当月办理过户、销户、品牌转换及取消套餐、套餐变更等情形。" />
+				                </group>		            		           
+			                </group>
+			                
+				            <!-- 流量叠加包 -->		            		            
+				            <group size="fill,wrap" orientation="vertical" hidden="false" id="group_overlyingID" >
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="选择流量叠加包:" />
+								<group size="fill,wrap" orientation="vertical" gravity="center_horizontal" >
+								    <group size="fill,wrap" margin="0,0,0,10" >
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="10元" onClick="onOverlyingMeal(page,this,'DJB10')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="20元" onClick="onOverlyingMeal(page,this,'DJB20')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="30元" onClick="onOverlyingMeal(page,this,'DJB30')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="50元" onClick="onOverlyingMeal(page,this,'DJB50')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="70元" onClick="onOverlyingMeal(page,this,'DJB70')" />
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="100元" onClick="onOverlyingMeal(page,this,'DJB100')" />
+								    </group>
+								    <group size="fill,wrap" >
+										<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="180元" onClick="onOverlyingMeal(page,this,'DJB180')" />
+								    </group>
+								</group>
+								
+				                <item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" textAlignment="center" cornerRadius="3" margin="0,30,0,30" label="下一步" onClick="onMealNextStep(page,'overlying')" />
+								
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="资费详情:" />
+								<item class="Image" size="pageWidth*60%,pageWidth*44.5%" margin="0,0,0,10" image="res://icon_overlyingMealPostage.png" />
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="温馨提示:" />
+				                <group size="fill,wrap" orientation="vertical" margin="0,0,0,10" >
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="1、生效规则：办理成功后立即生效，下一月结自动失效；叠加包一旦生效，立即扣费不能取消。同档次或不同档次的叠加包当月均可多次办理。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="2、流量封顶规则：超套餐外流量费用达到500元后不再扣费；另外，超套餐外流量达到15G自动关闭上网功能，如需继续使用，请办理叠加包恢复（注意会继续产生套餐外费用）。当月总流量达到50G即自动关闭上网功能，下一月结日自动恢复（全球通1日）。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="3、并存规则：已开通流量保障服务（原：安心计划）的用户可办理流量叠加包，互相不影响。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="4、套餐资源说明：套餐内所包含的服务为优惠业务，均为当月有效；当月未使用部分，系统将在月结日（全球通每月1日）自动清零。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="5、套餐包含的手机流量不支持流量转赠、流量转移等流量共享业务。" />
+				                </group>		            		           
+			                </group>
+			                
+				            <!-- 流量王套餐 -->
+				            <!-- 
+				            <group size="fill,wrap" orientation="vertical" hidden="false" id="group_kingID" >
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="选择流量王套餐:" />
+							    <group size="fill,wrap" margin="0,0,0,10" >
+									<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="9元" onClick="onKingMeal(page,this,'k9')" />
+									<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="19元" onClick="onKingMeal(page,this,'k19')" />
+									<item class="Label" size="pageWidth*8%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,20,0" label="30元" onClick="onKingMeal(page,this,'k30')" />
+							    </group>
+								
+				                <item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" textAlignment="center" cornerRadius="3" margin="0,30,0,30" label="下一步" onClick="onMealNextStep(page,'king')" />
+								
+								<item class="Image" size="pageWidth*60%,pageWidth*54%" margin="0,0,0,10" image="res://icon_kingMealPostage1.png" />
+								<item class="Image" size="pageWidth*60%,pageWidth*24%" margin="0,0,0,10" image="res://icon_kingMealPostage2.png" />
+								<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left" margin="0,0,0,10" label="温馨提示:" />
+				                <group size="fill,wrap" orientation="vertical" margin="0,0,0,10" >
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="1、12593/17951通话规则：在国内主叫国内（不含港澳台）按照资费标准国内拨打国内各项资费标准进行计费。在国内使用12593或17951拨打国际及港澳台电话参照现行国际及港澳台IP长途电话资费方案。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="2、流量封顶规则：数据流量执行15G封顶（不含套餐内流量）和流量费用500元封顶（不含套餐费），总流量50G封顶（含套餐内外）的策略。客户达到封顶流量后系统自动关闭上网功能，下个计费月恢复。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="3、套餐外流量资费标准：&#x000A;（1）已开通4G套餐、未自动开通流量保障服务（原：安心计划）的客户：国内4G流量按0.29元/M、国内2/3G流量按0.5元/M收费，套餐所含4G流量用完，将暂停4G上网功能，可通过办理流量叠加包恢复。&#x000A;（2）新办理客户/变更套餐客户：自2015年3月27日起，自动开通流量保障服务（原：安心计划），默认为50元档次，即超出套餐上网不足50元时按0.29元/M收费，达到50元时自动赠送827M国内通用流量，赠送流量用完后重复以上过程，以上国内均不含港澳台。如需了解或变更其他流量保障服务（原：安心计划），可发送短信LLBZ至10086。 4G流量王与4G大众卡之间互转保持原有流量保障服务档次不变。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="4、国内（不含港澳台）直拨港澳台及国际长途电话，统一按1元/2元/6元资费标准执行，具体如下：&#x000A;（1）港、澳、台：1.0元/分钟全包；&#x000A;（2）美国、加拿大、英国、法国、意大利、德国、新西兰、日本、韩国、澳大利亚、新加坡、马来西亚、泰国、印尼、菲律宾：2.0元/分钟全包；&#x000A;（3）其它国家及地区：6.0元/分钟全包。&#x000A;（4）拨打海事卫星电话、诺福克及迪戈加西亚方向不纳入语音套餐优惠范围。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="5、未有注明的通话类型等按现行标准资费规则。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="6、 短信资源说明：套餐所包含短信优惠服务，均为当月有效；当月未使用部分，系统将在月结日自动清零。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="7、对于各类旧资费套餐客户，在办理新4G套餐后原资费优惠将自动失效，已停止办理的旧资费套餐将不能再恢复。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="8、套餐内包含的国内2/3/4G通用流量可用于流量转赠，赠送的闲时流量以及自动叠加包赠送流量不可用于流量转赠。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="9、4G流量王与无限量套餐互斥，若无限量套餐客户想办理4G流量王，则必须先取消无限量套餐且生效后方能办理4G流量王。品牌内互转时不继承万花筒10元300M的套餐。" />
+									<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" label="10、流量资源说明：套餐所包含流量资源为优惠服务，2015年10月1日起套餐内所含的国内或省内通用流量（不含闲时流量以及主套餐额外赠送的国内或省内流量），当月未用完部分可结转下月使用（不含当月办理过户、销户、品牌转换及向下变更、取消套餐等情形）。其它未使用部分，将在月结日自动清零。" />
+				                </group>		            		           
+			                </group>
+				             -->		            		            
+			                		            		            
+		                </group>
+	                </group>
+		        </group >
+		        
+		        <!-- 家宽覆盖查询 -->
+		        <group size="fill,fill" orientation="vertical" hidden="true" id="group_coverID" >
+		            <group size="fill,45" background="#8fc320" >
+		                <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="家宽覆盖查询" /> 
+		            </group>
+		            
+	        		<group size="fill,fill" orientation="absolute" >
+				        <group field="ScrollView" size="fill,fill" orientation="vertical" >
+							<group size="pageWidth*60%,wrap" gravity="center_horizontal" margin="0,50,0,0" >
+				 				<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="所属区域：" />
+								<group size="fill,40" orientation="vertical" >
+									<group class="DropList" size="fill,40" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="所属区域" id="areaID" onValueChange="onCoverValueChange(page,this)" >
+										<item value="" label="福田区" />
+										<item value="" label="罗湖区" />
+										<item value="" label="南山区" />
+										<item value="" label="盐田区" />
+										<item value="" label="宝安区" />
+										<item value="" label="龙岗区" />
+										<item value="" label="光明新区" />
+										<item value="" label="龙华新区" />
+										<item value="" label="坪山新区" />
+										<item value="" label="大鹏新区" />
+									</group>
+				      				<item class="Image" size="18,18" gravity="right|center_vertical" margin="0,0,5,0" image="res://icon_go_down.png" />
+				   				</group>			            
+				 			</group>          
+				            
+							<group size="pageWidth*60%,wrap" orientation="vertical" gravity="center_horizontal" margin="0,10,0,0" >
+	       						<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" margin="20%,0,0,0" label="（小区名称+空格+门牌号，例：嘉葆润金座  1911）" />
+					            <group size="fill,wrap" >
+					       			<item class="Label" size="20%,40" fontSize="16" fontColor="#000000" gravity="top" label="详细地址：" />
+					       			<group size="fill,wrap" orientation="vertical" >
+										<item class="TextField" size="fill,40" placeHolder="请输入关键字搜索" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" padding="10,0,10,0" label="" id="searchID" onTextChanged="onCoverTextChanged(page,this)" />
+						       			<group field="ListTable" size="fill,wrap" orientation="vertical" divisionHeight="0" divisionColor="#00000000" background="#eeeeee" id="address_listID" >
+						       			    <Templates>
+						        			    <group size="fill,wrap" orientation="vertical" onClick="onAddressSelected(page,this)" >
+							            			<item class="Label" size="fill,40" fontSize="16" fontColor="#000000" selectedFontColor="#8fc320" margin="10,0,10,0" label="" id="address_nameID" />
+						       						<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+						        			    </group>
+						       			    </Templates>
+						       			</group>						
+					       			</group>
+					            </group>				        
+							</group>
+				                
+							<item class="Button" size="pageWidth*55%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" disabledBackground="#aaaaaa" disabled="true" cornerRadius="3" textAlignment="center" gravity="center_horizontal" margin="0,30,0,20" label="马上开通宽带" id="btn_openID" onClick="onNowOpen(page)" />
+				        </group>
+				        
+			            <group size="wrap,wrap" gravity="center" >
+			                <item class="Image" size="170,170" image="res://bg_logo.png" />
+			            </group>			        		        
+		            </group>			        		        
+		        </group>
+		        
+		        <!-- 免鉴权业务 -->
+		       
+		       <!-- 有账号 -->
+	            <group size="fill,fill" orientation="vertical" hidden="true" id="group_offerID" >
+		            <group size="fill,45" background="#8fc320" >
+		                <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="免鉴权业务" /> 
+		            </group>
+		            
+	        		<group size="fill,fill" orientation="absolute" >
+			            <group size="fill,fill" orientation="vertical" >
+			                <group size="wrap,wrap" gravity="center_horizontal" margin="0,60,0,0" >
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" image="res://icon_payment.png" label="缴费" hidden="false" onClick="onNextPage(page,this,'res://notAuthPaymentPage.xml')"/>
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="130,0,0,0" image="res://icon_yh.png" label="已办优惠" onClick="next(page)" />
+			                </group>
+			            </group>
+			            
+			            <group size="wrap,wrap" gravity="center" >
+			                <item class="Image" size="170,170" image="res://bg_logo.png" />
+			            </group>
+		        	</group>			                		            	                
+	            </group>
+	            
+	            <!-- 登录 -->
+		        <group size="fill,fill" orientation="vertical" hidden="true" id="group_loginID" >
+		            <group size="fill,45" background="#8fc320" >
+		                <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="免鉴权业务" /> 
+		            </group>
+		            
+	        		<group size="fill,fill" orientation="absolute" >
+				        <group field="ScrollView" size="fill,fill" orientation="vertical" >
+						        
+							<group size="pageWidth*60%,wrap" orientation="vertical" gravity="center_horizontal" margin="0,10,0,0" >
+					            <group size="fill,wrap" >
+					       			<group size="fill,wrap" orientation="vertical" >
+										<item class="TextField" size="fill,40" placeHolder="请输入手机号" placeHolderColor="#aaaaaa" maxLength="11" inputType="number" fontSize="16" margin="10,50,10,0" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" padding="10,0,10,0" label="" id="phoneNum" />
+						       			<group field="ListTable" size="fill,wrap" orientation="vertical" divisionHeight="0" divisionColor="#00000000" background="#eeeeee" id="alistID" >
+						       			   
+						       			</group>						
+					       			</group>
+					            </group>				        
+							</group>
+				                
+							<item class="Button" size="pageWidth*20%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" gravity="center_horizontal" margin="0,30,0,20" label="查询" id="btn_searchID" onClick="toAuth(page)" />
+				        </group>
+				        
+			            <group size="wrap,wrap" gravity="center" >
+			                <item class="Image" size="170,170" image="res://bg_logo.png" />
+			            </group>			        		        
+		            </group>			        		        
+		        </group>
+	            
+	            <!-- 免鉴权业务 -->		        
+		        
+	            <!-- 其他业务 -->
+	            <group size="fill,fill" orientation="vertical" hidden="true" id="group_otherID" >
+		            <group size="fill,45" background="#8fc320" >
+		                <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="其他业务" /> 
+		            </group>
+		            
+	        		<group size="fill,fill" orientation="absolute" >
+			            <group size="fill,fill" orientation="vertical" >
+			                <group size="wrap,wrap" gravity="center_horizontal" margin="0,30,0,0" >
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" image="res://icon_realName.png" label="实名登记" onClick="onBusinessPause(page)" />
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="50,0,0,0" image="res://icon_stopOn.png" label="停开机" onClick="onNextService(page,this,'res://stopOnPage.xml')" />
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="50,0,0,0" image="res://icon_payment.png" label="缴费" onClick="onNextPage(page,this,'res://paymentPage.xml')" />
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="50,0,0,0" image="res://icon_resetPassword.png" label="密码重置" onClick="onNextPage(page,this,'res://resetPasswordPage.xml')" />
+			                </group>
+			                
+			                <group size="wrap,wrap" gravity="center_horizontal" margin="0,30,0,0" >
+			                    <item class="ImageButton" size="wrap,wrap" gravity="left" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="0,0,0,0" image="res://icon_identity.png" label="家庭宽带" onClick="onNextService(page,this,'res://broadbandPage.xml')" />
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" image="res://icon_replacementCard.png" margin="50,0,0,0" label="补换卡" onClick="onNextService(page,this,'res://replacementCardPage.xml')" />
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="50,0,0,0" image="res://icon_prestore.png" label="预存送" onClick="onNextService(page,this,'res://prestorePage.xml')" />
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="50,0,0,0" image="res://icon_openAccout.png" label="全球通开户" onClick="onBusinessPause(page)" />
+			                </group>
+			                
+			                <group size="wrap,wrap" gravity="center_horizontal" margin="0,30,0,0" >
+	            				<item class="ImageButton" size="wrap,wrap" gravity="left" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="0,0,0,0" image="res://icon_flowYear.png" label="流量年包" onClick="onNextService(page,this,'res://flowYearPage.xml')" />
+			                	<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="50,0,0,0" image="res://fourmeal.png" label="4G套餐" onClick="onLeftHandle(page,this,'meal')" />
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="50,0,0,0" image="res://icon_fallback.png" label="一键回退" onClick="onNextPage(page,this,'res://fallbackPage.xml')" />
+	            				<item class="ImageButton" size="wrap,wrap" imageSize="100,100" fontSize="20" fontColor="#000000" space="10" imageGravity="top" margin="50,0,0,0" />
+			                </group>
+			            </group>
+			            
+			            <group size="wrap,wrap" gravity="center" >
+			                <item class="Image" size="170,170" image="res://bg_logo.png" />
+			            </group>
+		        	</group>			                		            	                
+	            </group>
+	            
+  	            <!-- 系统反馈 -->
+	            <group size="fill,fill" orientation="vertical" hidden="true" id="group_feedbackID" >
+		            <group size="fill,45" background="#8fc320" >
+		                <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="系统反馈" /> 
+		            </group>
+		            
+		            <group field="ScrollView" size="fill,wrap" orientation="vertical" >
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="实名登记" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_realNameID" onClick="onScore(page,this,'realName','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_realNameID" onClick="onScore(page,this,'realName','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_realNameID" onClick="onScore(page,this,'realName','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_realNameID" onClick="onScore(page,this,'realName','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_realNameID" onClick="onScore(page,this,'realName','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_realNameID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="停开机" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_stopOnID" onClick="onScore(page,this,'stopOn','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_stopOnID" onClick="onScore(page,this,'stopOn','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_stopOnID" onClick="onScore(page,this,'stopOn','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_stopOnID" onClick="onScore(page,this,'stopOn','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_stopOnID" onClick="onScore(page,this,'stopOn','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_stopOnID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="缴费" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_paymentID" onClick="onScore(page,this,'payment','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_paymentID" onClick="onScore(page,this,'payment','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_paymentID" onClick="onScore(page,this,'payment','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_paymentID" onClick="onScore(page,this,'payment','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_paymentID" onClick="onScore(page,this,'payment','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_paymentID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="补换卡" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_replacementCardID" onClick="onScore(page,this,'replacementCard','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_replacementCardID" onClick="onScore(page,this,'replacementCard','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_replacementCardID" onClick="onScore(page,this,'replacementCard','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_replacementCardID" onClick="onScore(page,this,'replacementCard','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_replacementCardID" onClick="onScore(page,this,'replacementCard','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_replacementCardID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="密码重置" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_resetPasswordID" onClick="onScore(page,this,'resetPassword','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_resetPasswordID" onClick="onScore(page,this,'resetPassword','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_resetPasswordID" onClick="onScore(page,this,'resetPassword','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_resetPasswordID" onClick="onScore(page,this,'resetPassword','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_resetPasswordID" onClick="onScore(page,this,'resetPassword','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_resetPasswordID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="预存送" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_prestoreID" onClick="onScore(page,this,'prestore','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_prestoreID" onClick="onScore(page,this,'prestore','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_prestoreID" onClick="onScore(page,this,'prestore','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_prestoreID" onClick="onScore(page,this,'prestore','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_prestoreID" onClick="onScore(page,this,'prestore','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_prestoreID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="全球通开户" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_openAccountID" onClick="onScore(page,this,'openAccount','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_openAccountID" onClick="onScore(page,this,'openAccount','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_openAccountID" onClick="onScore(page,this,'openAccount','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_openAccountID" onClick="onScore(page,this,'openAccount','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_openAccountID" onClick="onScore(page,this,'openAccount','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_openAccountID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="一键回退" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_fallbackID" onClick="onScore(page,this,'fallback','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_fallbackID" onClick="onScore(page,this,'fallback','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_fallbackID" onClick="onScore(page,this,'fallback','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_fallbackID" onClick="onScore(page,this,'fallback','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_fallbackID" onClick="onScore(page,this,'fallback','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_fallbackID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="家庭宽带" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_broadbandID" onClick="onScore(page,this,'broadband','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_broadbandID" onClick="onScore(page,this,'broadband','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_broadbandID" onClick="onScore(page,this,'broadband','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_broadbandID" onClick="onScore(page,this,'broadband','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_broadbandID" onClick="onScore(page,this,'broadband','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_broadbandID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" margin="20,30,20,0" >
+			                <group size="fill,wrap" margin="0,0,0,5" >
+				                <item class="Label" size="100,wrap" fontSize="16" fontColor="#000000" label="4G套餐" /> 
+				                <item class="Image" size="24,24" margin="10,0,0,0" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="one_menuID" onClick="onScore(page,this,'menu','1')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="two_menuID" onClick="onScore(page,this,'menu','2')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="three_menuID" onClick="onScore(page,this,'menu','3')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="four_menuID" onClick="onScore(page,this,'menu','4')" /> 
+				                <item class="Image" size="24,24" image="res://icon_score_not.png" selectedImage="res://icon_score_yes.png" id="five_menuID" onClick="onScore(page,this,'menu','5')" /> 
+			                </group>
+	            			<item class="TextView" size="fill,60" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,5,5,5" label="" id="word_menuID" />
+			            </group>
+		            
+	                	<item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" textAlignment="center" cornerRadius="3" margin="20,30,20,20" label="提交" onClick="onFeedbackSubmit(page)" />
+		            </group>
+	            </group>
+	            
+	            <!-- 消息盒子 -->
+	            <group size="fill,fill" orientation="vertical" hidden="true" id="group_newsID" >
+		            <group size="fill,45" background="#8fc320" >
+		                <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="消息盒子" />
+		            </group>
+		            
+		            <group field="ListTable" size="fill,fill" orientation="vertical" divisionHeight="0" divisionColor="#00000000" id="news_listID" >
+		                <Templates>
+		                    <group size="fill,wrap" orientation="vertical" >
+			                    <group size="fill,wrap" orientation="vertical" padding="20,10,20,10" >
+			                        <group size="fill,wrap" >
+										<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="" id="news_titleID" />
+										<item class="Label" size="wrap,wrap" fontSize="14" fontColor="#000000" gravity="right|center_vertical" label="" id="news_timeID" />
+			                        </group>
+			                        <group size="fill,wrap" >
+										<item class="Label" size="70%,wrap" fontSize="14" fontColor="#aaaaaa" label="" id="news_contentID" />
+										<item class="Label" size="wrap,wrap" fontSize="14" fontColor="#aaaaaa" gravity="right|center_vertical" label="" id="news_versionID" />
+			                        </group>
+			                    </group>
+					       		<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" margin="10,0,10,0" />
+		                    </group>
+		                </Templates>
+		            </group>
+	            </group>
+		        
+	        </group>
+        </group>
+		        
+		<PopupView id="leaveID" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" >
+			    <group size="300,wrap" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center" >
+			       	<item class="Label" size="fill,70" fontColor="#aaaaaa" fontSize="18" textAlignment="center" padding="10,10,10,10" label="亲，您真的要离开吗？" />
+	   				<item class="Line" size="fill,1" lineColor="#aaaaaa" lineWidth="1" background="clear" margin="10,0,10,0" />
+			       	<group size="fill,50" >
+			           	<item class="Button" size="150,50" fontSize="16" fontColor="#de1919" background="#00000000" pressBackground="#ebebeb" textAlignment="center" gravity="left" label="确定" onClick="outSure(page)" />
+		   				<item class="Line" size="1,35" lineColor="#aaaaaa" lineWidth="1" background="clear" gravity="center_vertical" />
+			           	<item class="Button" size="150,50" fontSize="16" fontColor="#de1919" background="#00000000" pressBackground="#ebebeb" textAlignment="center" gravity="right" label="取消" onClick="outCancle(page)" />
+			       	</group>
+		    	</group>
+		    </group>
+		</PopupView>
+		
+		<PopupView id="4g_tipsID" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" >
+			    <group size="300,200" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center" >
+			        <group size="fill,fill" orientation="vertical" padding="20,0,20,0" >
+			            <group size="wrap,wrap" orientation="vertical" gravity="center" >
+    	        			<item class="Label" size="wrap,wrap" fontSize="18" fontColor="#000000" gravity="center_horizontal" label="温馨提示：" />
+	            			<item class="Label" size="wrap,wrap" fontSize="18" fontColor="#000000" gravity="center_horizontal" margin="0,5,0,0" label="请先查询客户是否有合约捆绑、是否有不限量套餐业务" />
+			            </group>
+			        </group>
+	   				<group size="fill,wrap" orientation="vertical" gravity="bottom" >
+		   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+			           	<item class="Button" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="好的" onClick="on4GTips(page)" />
+	   				</group>
+		    	</group>
+		    </group>
+		</PopupView>
+		
+		<PopupView id="update_tipsID" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" >
+			    <group size="350,250" orientation="vertical" background="#ffffff" cornerRadius="4" gravity="center" >
+			        <group size="fill,fill" orientation="vertical" padding="10,0,10,0" >
+			            <group size="wrap,wrap" orientation="vertical" gravity="center" >
+	            			<item class="Label" size="wrap,wrap" fontSize="18" fontColor="#000000" textAlignment="center" gravity="center_horizontal" margin="0,0,0,10" label="" id="update_tipsTitleID" />
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_horizontal" label="2016年09月09日起，快速下单系统APP最新版本号为V1.1.3,解决了XX问题，新增XX功能。" id="update_tipsWordID" />
+			            </group>
+			        </group>
+	   				<group size="fill,wrap" orientation="vertical" gravity="bottom" >
+		   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+			           	<item class="Button" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="确定" onClick="onUpdateTipsDismiss(page)" />
+	   				</group>
+		    	</group>
+		    </group>
+		</PopupView>
+				
+	</page>
+</content>

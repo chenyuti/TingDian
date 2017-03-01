@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MFilter">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/uIEngineR41/libs/MFilter.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

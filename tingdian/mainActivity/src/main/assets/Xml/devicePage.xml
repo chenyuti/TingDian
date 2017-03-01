@@ -1,0 +1,34 @@
+<!-- 设备列表   -->
+<content>
+    <page id="devicePageID" >
+        <lua name="devicePage.lua" url="res://devicePage.lua" />
+        <group field="NavigationBar" size="fill,45" background="#8fc320" >
+            <item class="Label" size="wrap,wrap" label="搜索蓝牙设备" fontSize="20" fontColor="#ffffff" gravity="center" />
+            <item class="ImageButton" size="45,45" imageSize="20,20" image="res://icon_back_white.png" gravity="left|center_vertical" margin="10,0,0,0" onClick="goBack(page)" />
+   			<item class="Button" size="60,30" fontSize="14" fontColor="#ffffff" background="#8fc320" borderColor="#ffffff" borderWidth="1" cornerRadius="3" textAlignment="center" gravity="right|center_vertical" margin="0,0,20,0" label="确认" onClick="onSure(page)" />
+        </group>
+        
+        <group size="fill,wrap" orientation="vertical" background="#efefef" margin="0,10,0,10" hidden="false" id="" >
+            <item class="Line" size="fill,1" lineColor="#aaaaaa" lineWidth="1" background="clear" />
+            <group size="fill,40" margin="20,0,0,0" >
+		        <item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="默认：" />
+		        <item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="" id="device_defaultID" />
+            </group>
+            <item class="Line" size="fill,1" lineColor="#aaaaaa" lineWidth="1" background="clear" />
+        </group>
+        <item class="Line" size="fill,1" lineColor="#aaaaaa" lineWidth="1" background="clear" />
+
+        <group field="ListTable" size="fill,fill" orientation="vertical" divisionColor="#00000000" divisionHeight="0" onUpdate="onUpdate(page)" id="device_listID" >
+	        <Templates style="device" >
+		        <group size="fill,wrap" orientation="vertical" >
+		            <group size="fill,40" padding="20,0,20,0" onClick="onDeviceSelected(page,this)" >
+		                <item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left|center_vertical" label="" id="device_nameID" />
+		                <item class="Image" size="20,20" gravity="right|center_vertical" image="res://icon_circle_not.png" selectedImage="res://icon_circle_yes.png" id="device_selectedID" />
+		            </group>
+		            <item class="Line" size="fill,1" lineColor="#aaaaaa" lineWidth="1" background="clear" />
+		        </group>
+	        </Templates>
+        </group>        
+           	    
+	</page>
+</content>            	

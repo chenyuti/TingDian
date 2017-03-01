@@ -1,0 +1,85 @@
+<!-- 一键回退   -->
+<content>
+    <page id="fallbackPageID" >
+        <lua name="fallbackPage.lua" url="res://fallbackPage.lua" />
+        <group field="NavigationBar" size="fill,45" background="#8fc320" >
+            <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="一键回退" />
+            <item class="ImageButton" size="45,45" imageSize="20,20" gravity="left|center_vertical" margin="10,0,0,0" image="res://icon_back_white.png" onClick="goBack(page)" />
+            <group size="wrap,wrap" gravity="right|center_vertical" margin="0,0,10,0" >
+				<item class="TextField" size="pageWidth*25%,35" placeHolder="请输入搜索内容" placeHolderColor="#aaaaaa" fontSize="14" fontColor="#aaaaaa" background="#ffffff" cornerRadius="3" textAlignment="center" padding="5,0,5,0" margin="0,0,10,0" label="" id="search_wordID" />
+				<item class="Button" size="70,35" fontSize="14" fontColor="#000000" background="#ffffff" cornerRadius="3" textAlignment="center" label="搜索" onClick="onSearch(page)" />
+            </group>
+        </group>
+        
+        <group size="fill,50" borderWidth="1" borderColor="#aaaaaa" margin="20,20,20,0" >
+   			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="16" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="客户号码" />
+   			<item class="Label" size="pageWidth*6.5%,wrap" fontSize="16" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="名称" />
+   			<item class="Label" size="pageWidth*14%,wrap" fontSize="16" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="订单编号" />
+   			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="16" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="业务名称" />
+   			<item class="Label" size="pageWidth*9%,wrap" fontSize="16" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="实收费用" />
+   			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="16" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="受理人" />
+   			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="16" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="受理时间" />
+   			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="16" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="鉴权方式" />
+        </group>
+	        
+        <group size="fill,wrap" margin="0,30,0,0" hidden="true" id="group_notFallbackID" >
+            <item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" textAlignment="center" gravity="center" label="暂无可一键回退的订单" /> 
+        </group>
+			
+        <group field="ListTable" size="fill,fill" orientation="vertical" divisionHeight="0" divisionColor="#00000000" borderWidth="1" borderColor="#aaaaaa" margin="20,0,20,20" hidden="false" id="fallback_listID" onFlush="onFlush(page)" >
+        	<Templates>
+	            <group size="fill,wrap" orientation="vertical" onClick="onIMSI(page,this)" >
+		            <group size="fill,wrap" >
+			            <group size="pageWidth*87%,wrap" orientation="vertical" >
+				            <group size="fill,50" >
+				                <item class="Label" size="0,0" label="" id="imsiID" />
+				       			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="14" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="" id="mobileID" />
+				       			<item class="Label" size="pageWidth*6.5%,wrap" fontSize="14" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="" id="nameID" />
+				       			<item class="Label" size="pageWidth*14%,wrap" fontSize="14" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="" id="order_numID" />
+				       			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="14" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="" id="business_nameID" />
+				       			<item class="Label" size="pageWidth*9%,wrap" fontSize="14" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="" id="actualID" />
+				       			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="14" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="" id="acceptID" />
+				       			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="14" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="" id="timeID" />
+				       			<item class="Label" size="pageWidth*11.5%,wrap" fontSize="14" fontColor="#000000" textAlignment="center" gravity="center_vertical" label="" id="validateID" />
+				            </group>
+							<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+							<group size="fill,50" margin="10,0,0,0" >
+				       			<item class="Label" size="wrap,wrap" fontSize="14" fontColor="#000000" gravity="center_vertical" label="" id="remarkID" />
+							</group>
+			            </group>
+			            <group size="wrap,wrap" gravity="right|center_vertical" margin="0,0,10,0" >
+						    <item class="Label" size="0,0" label="" id="isExitID" />
+							<item class="Button" size="50,50" fontSize="14" fontColor="#ffffff" background="#aaaaaa" selectedBackground="#8fc320" cornerRadius="3" textAlignment="center" gravity="center" label="回退" id="btn_fallbackID" onClick="onFallback(page,this)" />
+			            </group>
+		            </group>
+					<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+	            </group>
+            </Templates>
+		</group>
+		
+		<PopupView id="reason_popupID" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" >
+			    <group size="300,200" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center" >
+            		<item class="TextView" size="fill,120" placeHolder="请输入回退原因" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="10,20,10,0" padding="5,5,5,5" label="" id="reasonID" />
+	   				<group size="fill,wrap" orientation="vertical" gravity="bottom" >
+		   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+			           	<item class="Button" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="确定回退" onClick="onFallbackSure(page)" />
+	   				</group>
+		    	</group>
+		    </group>
+		</PopupView>
+		
+		<PopupView id="imsi_popupID" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" >
+			    <group size="300,200" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center" >
+            		<item class="Label" size="fill,120" fontSize="16" fontColor="#000000" textAlignment="center" margin="10,10,10,10" label="IMSI号码为：" id="imsi_numID" />
+	   				<group size="fill,wrap" orientation="vertical" gravity="bottom" >
+		   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+			           	<item class="Button" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="确定" onClick="onIMSISure(page)" />
+	   				</group>
+		    	</group>
+		    </group>
+		</PopupView>
+		        
+	</page>
+</content>

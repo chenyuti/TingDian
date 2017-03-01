@@ -1,0 +1,68 @@
+<!-- 选号   -->
+<content>
+    <page id="pickingNumberPageID" >
+        <lua name="pickingNumberPage.lua" url="res://pickingNumberPage.lua" />
+        <group field="NavigationBar" size="fill,45" background="#8fc320" >
+            <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="选号" />
+            <item class="ImageButton" size="45,45" imageSize="20,20" gravity="left|center_vertical" margin="10,0,0,0" image="res://icon_back_white.png" onClick="goBack(page)" />
+        </group>
+        
+        <group field="ScrollView" orientation="vertical" size="fill,fill" background="#efefef" >
+            <group size="wrap,wrap" margin="50,20,50,10" gravity="center_horizontal" >
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num1" onTextChanged="onTextChanged(page,this,'1')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num2" onTextChanged="onTextChanged(page,this,'2')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num3" onTextChanged="onTextChanged(page,this,'3')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num4" onTextChanged="onTextChanged(page,this,'4')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num5" onTextChanged="onTextChanged(page,this,'5')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num6" onTextChanged="onTextChanged(page,this,'6')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num7" onTextChanged="onTextChanged(page,this,'7')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num8" onTextChanged="onTextChanged(page,this,'8')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num9" onTextChanged="onTextChanged(page,this,'9')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" margin="0,0,20,0" label="" id="num10" onTextChanged="onTextChanged(page,this,'10')" />
+				<item class="TextField" size="50,50" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="1" inputType="number" textAlignment="center" label="" id="num11" onTextChanged="onTextChanged(page,this,'11')" />
+            </group>
+            
+            <group size="fill,wrap" margin="50,0,50,20" >
+                <item class="Label" size="wrap,wrap" fontSize="14" fontColor="#000000" gravity="center_vertical" label="预存范围：" />
+				<item class="TextField" size="100,40" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" inputType="number" textAlignment="center" label="" id="min_priceID" />
+                <item class="Label" size="wrap,wrap" fontSize="14" fontColor="#000000" gravity="center_vertical" margin="5,0,0,0" label="元" />
+                <item class="Label" size="wrap,wrap" fontSize="14" fontColor="#000000" gravity="center_vertical" margin="10,0,10,0" label="至" />
+				<item class="TextField" size="100,40" fontSize="14" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" inputType="number" textAlignment="center" label="" id="max_priceID" />
+                <item class="Label" size="wrap,wrap" fontSize="14" fontColor="#000000" gravity="center_vertical" margin="5,0,0,0" label="元" />
+				
+                <group size="wrap,wrap" gravity="right" >
+					<item class="Button" size="pageWidth*15%,40" fontSize="14" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,0,100,0" label="查询号码" onClick="onCheck(page)" />
+					<item class="Button" size="pageWidth*15%,40" fontSize="14" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" label="自由选号" onClick="onFreedom(page)" />
+                </group>
+            </group>
+            
+            <group size="fill,wrap" margin="0,20,0,0" hidden="true" id="group_notListID" >
+           		<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center" label="暂未搜索到相关号码" />
+            </group>
+            
+			<group field="GridTable" size="fill,wrap" orientation="vertical" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="20,0,20,0" numColumns="4" hidden="false" id="mobile_listID" >
+	            <Templates >
+	                <group size="25%,wrap" orientation="vertical" onClick="onSelectedNumber(page,this)" >
+       			        <group size="fill,wrap" selectedBackground="#8fc320" >
+       			            <group size="wrap,wrap" gravity="center" >
+       			                <item class="Label" size="0,0" label="" id="price_ID" />
+					    		<item class="Label" size="wrap,wrap" fontSize="14" fontColor="#000000" textAlignment="center" label="" id="mobileID" />
+					    		<item class="Label" size="wrap,wrap" fontSize="14" fontColor="#000000" textAlignment="center" margin="20,0,0,0" label="" id="priceID" />
+       			            </group>
+		   					<item class="Line" size="1,50" lineWidth="1" lineColor="#aaaaaa" background="clear" gravity="right" />
+       			        </group>
+		   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+	                </group>
+	            </Templates>
+            </group>
+		    
+			<group size="wrap,wrap" gravity="right" margin="0,20,20,40" >
+                <item class="Label" size="wrap,wrap" fontSize="14" fontColor="#000000" gravity="center_vertical" label="已选号码：" />
+                <item class="Label" size="0,0" label="" id="selected_priceID" />
+                <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center_vertical" label="" id="selected_numID" />
+				<item class="Button" size="pageWidth*15%,40" fontSize="14" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="20,0,0,0" label="确认号码" onClick="onSureNumber(page)" />
+			</group>
+        </group>
+        
+	</page>
+</content>

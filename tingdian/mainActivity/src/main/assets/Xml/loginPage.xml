@@ -1,0 +1,52 @@
+<!-- 登录   -->
+<content>
+    <page id="loginPageID" >
+        <lua name="loginPage.lua" url="res://loginPage.lua" />
+        
+        <group size="fill,fill" orientation="absolute" background="res://bg_login.png" >
+            <group size="wrap,wrap" orientation="vertical" gravity="center" margin="0,-90,0,0" hidden="false" id="group_loginID" >
+                <group size="pageWidth*35%,40" background="#d3d3d3" cornerRadius="4" padding="20,0,0,0" >
+                    <item class="Label" size="wrap,wrap" fontSize="18" fontColor="#000000" gravity="center_vertical" label="账号：" />
+                    <item class="TextField" size="fill,wrap" fontSize="18" fontColor="#000000" gravity="center_vertical" id="accountID" />
+                </group>
+                
+                <group size="pageWidth*35%,40" background="#d3d3d3" cornerRadius="4" padding="20,0,0,0" margin="0,20,0,0" >
+                    <item class="Label" size="wrap,wrap" fontSize="18" fontColor="#000000" gravity="center_vertical" label="密码：" colorChange="false"/>
+                    <item class="TextField" size="fill,wrap" fontSize="18" fontColor="#000000" inputType="password" gravity="center_vertical" id="passwordID" />
+                </group>
+                
+	            <item class="ImageButton" size="wrap,25" imageSize="14,14" fontSize="14" fontColor="#8fc320" image="res://icon_remember_no.png" selectedImage="res://icon_remember_yes.png" margin="20,10,0,20" space="10" label="记住密码" id="btn_isRememberID" onClick="onRemember(page,this)" />
+                
+	        	<item class="Button" size="pageWidth*35%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="4" textAlignment="center" label="提交并获取验证码" onClick="onLogin(page,this)" />
+            </group>
+                        
+            <group size="wrap,wrap" orientation="vertical" gravity="center" margin="0,-90,0,0" hidden="true" id="group_smsID" >
+                <group size="pageWidth*35%,40" background="#d3d3d3" cornerRadius="4" >
+                    <item class="Label" size="wrap,wrap" fontSize="18" fontColor="#000000" gravity="center_vertical" padding="10,0,0,0" label="短信验证码：" />
+                    <item class="TextField" size="fill,wrap" fontSize="18" fontColor="#000000" inputType="number" maxLength="6" gravity="center_vertical" id="smsID" />
+   					<item class="Button" size="80,40" fontSize="16" fontColor="#ffffff" background="#8fc320" disabledBackground="#aaaaaa" disabled="true" textAlignment="center" cornerRadius="4" gravity="right" label="重新获取" id="btn_smsID" onClick="onObtain(page)" />
+                </group>
+                
+	        	<item class="Button" size="pageWidth*35%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="4" textAlignment="center" margin="0,30,0,40" label="登 录" onClick="onSMSCheck(page)" />
+	        	
+	        	<group size="wrap,wrap" orientation="vertical" gravity="center_horizontal" onClick="onAgain(page)" >
+    	            <item class="Label" size="wrap,wrap" fontSize="16" fontColor="#8fc320" label="重新输入账号/密码" />
+		       		<item class="Line" size="135,1" lineWidth="1" lineColor="#8fc320" background="clear" />	       		
+	        	</group>
+            </group>
+            
+            <!-- 激活码 -->
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" gravity="center" hidden="true" id="is_activatedID" >
+			    <group size="300,200" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center" >
+			        <item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" textAlignment="center" margin="20,30,20,0" label="请前往“厅店后台->激活码”菜单申请激活码：" id="tipsID" />
+            		<item class="TextField" size="fill,40" placeHolder="请输入10位数的激活码" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" maxLength="10" textAlignment="center" margin="20,10,20,0" padding="5,5,5,5" label="" id="activation_codeID" />
+	   				<group size="fill,wrap" orientation="vertical" gravity="bottom" >
+		   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+			           	<item class="Button" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="确定激活" onClick="onIsActivatedSure(page)" />
+	   				</group>
+		    	</group>
+		    </group>
+        </group>
+
+	</page>
+</content>

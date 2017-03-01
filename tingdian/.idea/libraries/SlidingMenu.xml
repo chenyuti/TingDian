@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SlidingMenu">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/uIEngineR41/libs/SlidingMenu.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

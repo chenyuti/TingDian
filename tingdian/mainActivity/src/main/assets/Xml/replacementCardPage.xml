@@ -1,0 +1,290 @@
+<!-- 补换卡   -->
+<content>
+    <page id="replacementCardPageID" >
+        <lua name="replacementCardPage.lua" url="res://replacementCardPage.lua" />
+        
+        <group size="fill,fill" >
+        	<!-- 小左边 -->
+	        <group size="pageWidth*30%,fill" orientation="vertical" background="#efefef" >
+		        <group field="NavigationBar" size="fill,45" background="#8fc320" >
+		            <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="补换卡" />
+		            <item class="ImageButton" size="45,45" imageSize="20,20" gravity="left|center_vertical" margin="10,0,0,0" image="res://icon_back_white.png" onClick="goBack(page)" />
+		        </group> 
+		        
+	            <group size="fill,wrap" orientation="vertical" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="10,10,10,10" padding="10,10,10,10" >
+	            	<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" label="" id="customer_mobileID" />
+	            	<group size="wrap,wrap" >
+	            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#aaaaaa" gravity="center_vertical" label="" id="customer_brandID" />
+	       				<item class="Line" size="1,10" lineWidth="1" lineColor="#aaaaaa" background="clear" gravity="center_vertical" margin="5,0,5,0" />
+	            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#aaaaaa" gravity="center_vertical" label="" id="customer_realNameID" />
+	            	</group>
+                </group>
+                
+	            <group size="fill,wrap" orientation="vertical" margin="10,0,10,10" hidden="true" id="group_loginID" >
+            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#000000" label="你的号码已身份确认，请使用证件鉴权：" />
+	            	<group size="fill,wrap" margin="0,10,0,10" >
+	            		<item class="Button" size="48%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" gravity="left|center_vertical" label="本人凭证件" id="btn_IDCardID" onClick="onLoginSelected(page,this,'IDCard')" />
+	            		<item class="Button" size="48%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" gravity="right|center_vertical" label="有效证件" onClick="onLoginSelected(page,this,'valid')" />
+			        </group>
+			        
+		            <group size="fill,wrap" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" hidden="true" id="group_idcardID" >
+   						<item class="Label" size="fill,40" fontSize="16" fontColor="#aaaaaa" textAlignment="center" padding="5,0,5,0" label="" id="idcard_numID" />
+		                <item class="ImageButton" size="40,40" imageSize="30,30" gravity="right|center_vertical" image="res://icon_scanning_grey.png" onClick="onBluetoothScanning(page,'idcard')" />
+		            </group>
+		            
+	            	<group size="fill,wrap" orientation="vertical" hidden="true" id="group_validID" >
+		                <group size="fill,40" orientation="vertical" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="0,0,0,10" >
+			                <group class="DropList" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="请选择证件类型" id="selected_validID" onValueChange="onValueChange(page,this)" >
+						    	<item value="IdCard" label="身份证" />
+							    <item value="SoldierID" label="士兵证" />
+							    <item value="PolicePaper" label="警官证" />
+							    <item value="Passport" label="护照" />
+							    <item value="HuKouBu" label="户口簿" />
+							    <item value="HKIdCard" label="港澳证" />
+							    <item value="IdVipCard" label="VIP卡" />
+							    <item value="GongZhang" label="公章" />
+							    <item value="TempId" label="临时身份证" />
+							    <item value="DriverIC" label="驾驶证" />
+							    <item value="PLA" label="军官证" />
+							    <item value="IdTypeJSX" label="单位介绍信" />
+							    <item value="StudentID" label="学生证" />
+							    <item value="TeacherID" label="教师证" />
+							    <item value="FuYuanZheng" label="复员证" />
+							    <item value="ZanZhuZheng" label="暂住证" />
+							    <item value="RetNative" label="还乡证" />
+							    <item value="OtherLicence" label="其他" />
+							    <item value="BusinessLicence" label="营业执照" />
+							    <item value="UnitID" label="单位证明" />
+							    <item value="CorpLicence" label="事业单位法人证书" />
+							    <item value="OrgaLicence" label="社会团体法人登记证书" />									    
+			                </group>
+	                		<item class="Image" size="16,16" gravity="right|center_vertical" margin="0,0,10,0" image="res://icon_go_down.png" />
+		                </group>
+			            <group size="fill,wrap" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" hidden="true" id="group_validIDCardID" >
+	   						<item class="Label" size="fill,40" fontSize="16" fontColor="#aaaaaa" textAlignment="center" padding="5,0,5,0" label="" id="valid_idcardNumID" />
+			                <item class="ImageButton" size="40,40" imageSize="30,30" gravity="right|center_vertical" image="res://icon_scanning_grey.png" onClick="onBluetoothScanning(page,'valid')" />
+			            </group>
+			            <group size="fill,wrap" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" hidden="true" id="group_validOtherID" >
+		                    <item class="TextField" size="fill,40" placeHolder="请输入证件号码" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" textAlignment="center" padding="5,0,5,0" id="valid_otherNumID" />
+			            </group>		                	            	
+	            	</group>
+	            	
+	            	 <!--提示语  -->
+			            <group size="fill,wrap" margin="0,20,0,0" hidden="false" id="group_scan_card">
+							<item class="Label" padding="10,0,10,0" size="wrap,wrap" fontSize="16" fontColor="#ff0000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderColor="#ff0000" borderWidth="1" cornerRadius="3" label="请把机主本人的身份证放置在读卡器后，点击扫描键"/>
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,20,0,0" hidden="true" id="group_scan_submit">
+							<item class="Label" padding="10,0,10,0" size="wrap,wrap" fontSize="16" fontColor="#ff0000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderColor="#ff0000" borderWidth="1" cornerRadius="3" label="点击“确认”键"/>
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,20,0,0" hidden="true" id="group_const_submit">
+							<item class="Label" padding="10,0,10,0" size="wrap,wrap" fontSize="16" fontColor="#ff0000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderColor="#ff0000" borderWidth="1" cornerRadius="3" label="点击“校验”键"/>
+			            </group>
+			            <!--提示语  -->	 
+	            	
+					<item class="Button" SimpleAnimSupport = "true"  default_anim = "default"  size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,10,0,0" label="确认" onClick="onLoginSure(page,this)" />
+                </group>
+                
+	            <group size="fill,wrap" orientation="vertical" margin="10,0,10,10" hidden="true" id="group_callLogsID" >
+            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#000000" label="你的号码未身份确认，请使用通话记录验证：" />
+            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#000000" label="温馨提示：深圳固话无需输入0755" />
+	            	<group size="fill,wrap" orientation="vertical" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="0,10,0,0" >
+	            	    <group size="fill,wrap" margin="10,0,10,0" >
+		            		<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left|center_vertical" label="号码1：" />
+							<item class="TextField" size="fill,40" fontSize="16" fontColor="#aaaaaa" inputType="number" label="" id="call_num1ID" />
+							<item id="num_notice1" class="Label" hidden="true" size="wrap,wrap" fontSize="12" fontColor="#ff0000" gravity="right|center_vertical" label="不通过" />
+	            	    </group>
+	       				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" margin="10,0,10,0" />
+	       				
+	            	    <group size="fill,wrap" margin="10,0,10,0" >
+		            		<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left|center_vertical" label="号码2：" />
+							<item class="TextField" size="fill,40" fontSize="16" fontColor="#aaaaaa" inputType="number" label="" id="call_num2ID" />
+							<item id="num_notice2" class="Label" hidden="true" size="wrap,wrap" fontSize="12" fontColor="#ff0000" gravity="right|center_vertical" label="不通过" />
+	            	    </group>
+	       				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" margin="10,0,10,0" />
+	       				
+	            	    <group size="fill,wrap" margin="10,0,10,0" >
+		            		<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left|center_vertical" label="号码3：" />
+							<item class="TextField" size="fill,40" fontSize="16" fontColor="#aaaaaa" inputType="number" label="" id="call_num3ID" />
+							<item id="num_notice3" class="Label" hidden="true" size="wrap,wrap" fontSize="12" fontColor="#ff0000" gravity="right|center_vertical" label="不通过" />
+	            	    </group>
+			        </group>
+					<item class="Button" SimpleAnimSupport = "true"  default_anim = "default" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,10,0,10" label="校验" onClick="onCallLogsSure(page,this)" />
+            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#000000" label="1、请提供 5 天前、3个月内不少于 3 个不同的主叫通话号码（含短信 、彩信、各类短号）。" />
+            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#000000" label="2、主叫通话号码不包括10086、13800138000、1008611等特殊客服号码。" />
+                </group>
+                
+	        </group>
+	        
+	        <!-- 大右边 -->
+       		<group size="fill,fill" orientation="absolute" >
+	            <group field="ScrollView" size="fill,fill" orientation="vertical" >
+	                <group size="fill,45" margin="0,0,0,10" >
+            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="补换卡" />
+			        </group>
+				        
+	       		    <!-- 步骤1 -->
+		            <group size="fill,wrap" orientation="vertical" margin="pageWidth*5%,0,pageWidth*5%,0" hidden="false" id="group_applyID" >
+			            <group size="fill,wrap" margin="0,10,0,0" >
+	            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="现卡类型:" />
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="" id="old_cardID" />
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" hidden = "true">
+	            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="操作类型:" />
+							<item class="Button" size="20%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="" id="btn_handleID" />
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" hidden = "true">
+	            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="新卡类型:" />
+							<item class="Button" size="20%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="USIM卡" id="new_cardID" />
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" >
+	            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="是否免费:" />
+							<item class="Button" SimpleAnimSupport = "true"  default_anim = "default" size="20%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,10,0" label="免费" id="btn_freeID" onClick="showPopupView(page)" />
+							<item class="Button" hidden = "true" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" label="否" id="btn_notFreeID"/>
+			            </group>
+			            
+			            <!-- 是否免费提示语 -->
+		<PopupView id="pop_notice" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" gravity="center">
+			    <group size="300,200" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center|center_horizontal" >
+			        	<group size="fill,wrap" margin="15,40,0,20" >
+	            			<item class="Label" size="fill,wrap" fontSize="16" fontColor="#FF0000" label="系统仅支持免费补换卡，请确认客户资格，请点击是，否则选否" />
+						</group>
+							 
+						<group size="fill,wrap" margin="15,10,0,0" gravity="center_horizontal">
+							<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" margin="0,0,10,0" label="是" id="btn_freeID_notice" onClick="onChargeSelected(page,this,'free')" />
+							<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" textAlignment="center" label="否" id="btn_notFreeID_notice" onClick="onChargeSelected(page,this,'notFree')" />
+			            </group>
+		    	</group>
+		    </group>
+		</PopupView>       
+			            <!-- 是否免费提示语 -->
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" orientation="vertical">
+							<item class="Label" margin="0,10,0,0" size="fill,wrap" fontSize="16" fontColor="#000000"  label="第一步：请确认备卡已在BOSS系统做过备卡销售" />
+							<item class="Label" margin="0,10,0,0" size="fill,wrap" fontSize="16" fontColor="#000000"  label="第二部：请把备卡SIM卡号朝上放置后，点击“扫瞄”键后系统自动录入SIM卡号" />
+		    			</group>
+			           
+			            <group size="fill,wrap" margin="0,10,0,0" hidden="true" id="id_sim">
+	            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="SIM卡号:" />
+       						<item class="TextField" size="40%,40" fontSize="16" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" padding="10,0,0,0" label="" id="card_simID" />
+							<item class="Button" size="80,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="10,0,0,0" padding="0,0,0,0" label="扫描" onClick="onSweep(page)" />
+			            </group>
+			            		            	
+			            <group size="fill,wrap" margin="0,10,0,0" hidden="true" id="id_imsi">
+	            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="IMSI号:" />
+       						<item class="TextField" size="40%,40" fontSize="16" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" padding="10,0,0,0" label="" id="card_imsiID" />
+							<item class="Button" size="80,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="10,0,0,0" padding="0,0,0,0" label="获取IMSI" onClick="getIMSI(page)" />
+			            </group>
+			            
+						<item class="Button" size="fill,40" fontSize="20" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,30,0,20" label="下一步" hidden="true" id="btn_stepID" onClick="onNextStep(page)" />
+		            </group>
+		            
+		            <!-- 步骤2 -->
+		            <group size="fill,wrap" orientation="vertical" margin="pageWidth*5%,0,pageWidth*5%,0" hidden="true" id="group_apply2ID" >
+			            <group size="fill,wrap" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" margin="0,0,10,0" label="操作:" />
+       						<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="" id="pay_nameID" />
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" margin="0,0,10,0" label="优惠价格:" />
+       						<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="￥0.00" id="pay_discountID" />
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" margin="0,0,10,0" label="实收价格:" />
+       						<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="" id="pay_actualID" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" hidden="false" id="group_payID" >
+				            <group size="fill,wrap" margin="0,10,0,0" >
+		            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="支付方式:" />
+								<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" margin="0,0,10,0" label="POS机" id="btn_posID" onClick="onPaymentSelected(page,this,'pos')" />
+								<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="现金" id="btn_cashID" onClick="onPaymentSelected(page,this,'cash')" />
+				            </group>
+				            			            
+				            <group size="fill,wrap" margin="0,10,0,0" hidden="false" id="group_posID" >
+		            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="POS单号:" />
+	       						<item class="TextField" size="fill,40" placeHolder="请输入POS单号" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#aaaaaa" textAlignment="center" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" padding="10,0,0,0" label="" id="pos_numID" />
+				            </group>
+			            </group>			            
+			            
+				        <group size="fill,wrap" orientation="vertical" margin="0,40,0,0" >
+				            <group size="wrap,wrap" margin="0,0,0,10" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="业务签单:" />
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#8fc320" label="《业务受理单》" onClick="onContractDetail(page)" />
+				            </group>
+				            <group size="135,95" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" >
+				                <item class="Label" size="0,0" label="" id="signature_urlID" />
+	            				<item class="Image" size="fill,fill" scaleType="centerInside" gravity="center" padding="1,1,1,1" image="" id="write_signatureID" />
+				            </group>
+			            </group>
+			            		        
+				        <group size="fill,wrap" orientation="vertical" margin="0,40,0,0" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" margin="0,0,0,10" label="证件拍照留存（最多5张）:" />
+							<group field="GridTable" size="425,wrap" orientation="vertical" numColumns="3" id="photograph_listID" >
+					            <Templates >
+					                <group size="135,95" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="0,0,0,10" padding="2,2,2,2" onClick="onPhotograph(page,this)">
+		            			        <item class="Label" size="0,0" label="" id="isPhotographID" />
+					                    <item class="Image" size="fill,fill" scaleType="centerCrop" gravity="center" image="" id="decoment_pictureID" />
+					                </group>
+					            </Templates>
+				            </group>				        
+			            </group>			        
+			            
+				        <group size="fill,wrap" orientation="vertical" margin="0,30,0,0" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" margin="0,0,0,10" label="备注:" />
+           					<item class="TextField" size="fill,wrap" placeHolder="请输入备注" placeHolderColor="#aaaaaa" fontSize="18" fontColor="#000000" textAlignment="center" borderColor="#aaaaaa" borderWidth="1" cornerRadius="3" padding="10,5,10,5" label="" id="remark_ID" />
+			            </group>
+			            
+						<item class="Button" size="fill,40" fontSize="20" fontColor="#ffffff" background="#8fc320" disabledBackground="#aaaaaa" cornerRadius="3" textAlignment="center" margin="0,30,0,20" label="提交" id="btn_submitID" onClick="onSubmit(page)" />
+		            </group>
+		            
+	                <!-- 办理成功 -->
+	                <group size="fill,wrap" orientation="vertical" hidden="true" id="group_passID" >
+		                <item class="Image" size="pageWidth*20%,pageWidth*20%" gravity="center_horizontal" margin="0,30,0,30" image="res://icon_success.png" />
+	           			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" textAlignment="center" gravity="center_horizontal" label="您已成功办理补换卡！" id="pass_wordID" />
+	           			
+				        <group size="wrap,wrap" gravity="center_horizontal" margin="0,80,0,0" >
+							<item class="Button" hidden="true" size="pageWidth*25%,40" fontSize="18" fontColor="#ffffff" textAlignment="center" background="#8fc320" cornerRadius="3" margin="0,0,40,0" label="本次服务已完成" onClick="onCustomerQuit(page)" />
+							<item class="Button" size="pageWidth*30%,40" fontSize="14" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" label="返回客户服务" id="btn_replacementCardID"onClick="backServicePage(page)"/>
+			            </group>           			
+			        </group>                
+	       		    
+	       		    <!-- 办理失败 -->
+	                <group size="fill,wrap" orientation="vertical" hidden="true" id="group_failID" >
+		                <item class="Image" size="pageWidth*20%,pageWidth*20%" gravity="center_horizontal" margin="0,30,0,30" image="res://icon_fail.png" />
+       					<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center_horizontal" margin="pageWidth*10%,20,pageWidth*10%,0" label="办理失败！" id="fail_wordID" />
+	           				           			
+				        <group size="wrap,wrap" gravity="center_horizontal" margin="0,80,0,0" >
+							<item class="Button" size="pageWidth*25%,40" fontSize="18" fontColor="#ffffff" textAlignment="center" background="#8fc320" cornerRadius="3" margin="0,0,40,0" label="本次服务已完成" onClick="onCustomerQuit(page)" />
+							<item class="Button" size="pageWidth*25%,40" fontSize="18" fontColor="#ffffff" textAlignment="center" background="#8fc320" cornerRadius="3" label="重新进行办理" onClick="onAgain(page)" />
+			            </group>           			
+			        </group>	            
+                </group>
+                
+	            <group size="wrap,wrap" gravity="center" >
+	                <item class="Image" size="170,170" image="res://bg_logo.png" />
+	            </group>
+        	</group>
+        </group>
+        
+        <PopupView id="pop_pictureID" >
+	        <group size="fill,fill" shadow="false" background="#000000" >
+   				<group size="fill,fill" field="ImageSlider" interval="2000" pageControl="bottom" autoScroll="false" cycle="true" controlBackground="#55ffffff" selectedControlBackground="#ffffff" id="look_imageID" >
+					<Templates>
+					    <group size="fill,fill" >
+				            <item class="Image" size="fill,fill" gravity="center" id="big_imageID" onClick="pictureDismiss(page,this)" />
+					    </group>
+					</Templates>	
+				</group>
+	        </group>
+        </PopupView>            
+        
+	</page>
+</content>

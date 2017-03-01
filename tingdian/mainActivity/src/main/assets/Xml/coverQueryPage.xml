@@ -1,0 +1,53 @@
+<!-- 覆盖查询   -->
+<content>
+    <page id="coverQueryPageID" >
+        <lua name="coverQueryPage.lua" url="res://coverQueryPage.lua" />
+        <group field="NavigationBar" size="fill,45" background="#8fc320" >
+            <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="覆盖查询" />
+            <item class="ImageButton" size="45,45" imageSize="20,20" gravity="left|center_vertical" margin="10,0,0,0" image="res://icon_back_white.png" onClick="goBack(page)" />
+        </group>
+		        
+        <group field="ScrollView" size="fill,fill" orientation="vertical" >
+			<group size="55%,wrap" gravity="center_horizontal" margin="0,50,0,0" >
+ 				<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="所属区域：" />
+				<group size="fill,40" orientation="vertical" >
+					<group class="DropList" size="fill,40" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="所属区域" id="areaID" onValueChange="onValueChange(page,this)" >
+						<item value="" label="福田区" />
+						<item value="" label="罗湖区" />
+						<item value="" label="南山区" />
+						<item value="" label="盐田区" />
+						<item value="" label="宝安区" />
+						<item value="" label="龙岗区" />
+						<item value="" label="光明新区" />
+						<item value="" label="龙华新区" />
+						<item value="" label="坪山新区" />
+						<item value="" label="大鹏新区" />
+					</group>
+      				<item class="Image" size="18,18" gravity="right|center_vertical" margin="0,0,5,0" image="res://icon_go_down.png" />
+   				</group>			            
+ 			</group>          
+            
+			<group size="55%,wrap" orientation="vertical" gravity="center_horizontal" margin="0,10,0,0" >
+       			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" margin="20%,0,0,0" label="（小区名称+空格+门牌号，例：嘉葆润金座  1911）" />
+	            <group size="fill,wrap" >
+	       			<item class="Label" size="20%,40" fontSize="16" fontColor="#000000" gravity="top" label="详细地址：" />
+	       			<group size="fill,wrap" orientation="vertical" >
+						<item class="TextField" size="fill,40" placeHolder="请输入关键字搜索" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" padding="10,0,10,0" label="" id="searchID" onTextChanged="onTextChanged(page,this)" />
+		       			<group field="ListTable" size="fill,wrap" orientation="vertical" divisionHeight="0" divisionColor="#00000000" background="#eeeeee" id="address_listID" >
+		       			    <Templates>
+		        			    <group size="fill,wrap" orientation="vertical" onClick="onAddressSelected(page,this)" >
+			            			<item class="Label" size="fill,40" fontSize="16" fontColor="#000000" selectedFontColor="#8fc320" margin="10,0,10,0" label="" id="address_nameID" />
+		       						<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+		        			    </group>
+		       			    </Templates>
+		       			</group>						
+	       			</group>
+	            </group>				        
+			</group>
+                
+			<item class="Button" size="55%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" disabledBackground="#aaaaaa" disabled="true" cornerRadius="3" textAlignment="center" gravity="center_horizontal" margin="0,30,0,20" label="马上开通宽带" id="btn_openID" onClick="onNowOpen(page)" />
+        </group>
+        
+	</page>
+</content>        
+        		        

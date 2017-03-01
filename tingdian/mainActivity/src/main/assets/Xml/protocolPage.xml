@@ -1,0 +1,80 @@
+<!-- 协议   -->
+<content>
+    <page id="protocolPageID" >
+        <lua name="protocolPage.lua" url="res://protocolPage.lua" />
+        <group field="NavigationBar" size="fill,45" background="#8fc320" >
+            <group size="wrap,35" background="#ffffff" gravity="center" >
+                <item class="Button" size="120,35" fontSize="16" fontColor="#aaaaaa" selectedFontColor="#8fc320" textAlignment="center" gravity="center_vertical" label="服务协议" id="btn_protocolID" onClick="onProtocolType(page,this,'1')" /> 
+	       		<item class="Line" size="1,fill" lineWidth="1" lineColor="#828183" background="clear" />
+                <item class="Button" size="120,35" fontSize="16" fontColor="#aaaaaa" selectedFontColor="#8fc320" textAlignment="center" gravity="center_vertical" label="业务受理单" id="btn_businessID" onClick="onProtocolType(page,this,'2')" /> 
+            </group>            
+            <item class="ImageButton" size="45,45" imageSize="20,20" image="res://icon_back_white.png" gravity="left|center_vertical" margin="10,0,0,0" onClick="goBack(page)" />
+            <item class="Button" size="60,30" fontSize="16" fontColor="#000000" background="#ffffff" cornerRadius="3" gravity="right|center_vertical" margin="0,0,10,0" label="确定" onClick="onSure(page)" />
+        </group>
+        
+        
+        <group field="ScrollView" size="fill,fill" orientation="vertical" hidden="true" id="group_protocolID" >
+	        <item class="Image" size="pageWidth*100%,pageWidth*138%" gravity="center" image="res://bg_protocolDetail.png" />
+			<item class="Button" size="120,40" fontSize="16" fontColor="#aaaaaa" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" textAlignment="center" gravity="right|bottom" margin="0,30,60,20" label="下一步" onClick="onNextStep(page)" />
+        </group>
+                
+   		<group size="fill,fill" orientation="absolute" hidden="true" id="group_businessID" >
+            <group field="ScrollView" size="fill,fill" orientation="vertical" background="#ffffff" >
+                <item class="Image" size="pageWidth*100%,pageWidth*10%" gravity="top" image="res://icon_protocol_start.png" />
+                
+                <group size="fill,wrap" orientation="vertical" background="#fde8e7" >
+	                <group size="fill,wrap" margin="60,10,60,20" >
+            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="left|bottom" label="" id="timeID" />
+            			<item class="Label" size="wrap,wrap" fontSize="25" fontColor="#000000" gravity="center" label="业务受理单" />
+            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="right|bottom" label="SZGT[201406]PY-(05)" />
+			        </group>
+			        
+			        <group size="fill,wrap" orientation="vertical" borderColor="#aaaaaa" borderWidth="1" background="#ffffff" margin="20,0,20,0" >
+			            <group size="fill,wrap" orientation="vertical" >
+				            <group size="fill,wrap" >
+		            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" textAlignment="center" margin="30,20,30,20" label="客户&#x000A;资料" />
+   								<group size="wrap,wrap" orientation="vertical" gravity="center_vertical" padding="0,10,0,10" >
+			            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="" id="mobileID" />
+			            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="" id="nameID" />
+   								</group>
+				            </group>
+							<item class="Line" size="fill,1" lineColor="#aaaaaa" lineWidth="1" background="clear" />
+			            </group>
+			            
+			            <group size="fill,wrap" orientation="vertical" >
+				            <group size="fill,wrap" padding="0,10,10,10" >
+		            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" textAlignment="center" margin="30,30,30,30" label="业务&#x000A;受理&#x000A;内容" />
+			        			<group field="ListTable" size="wrap,wrap" orientation="vertical" divisionHeight="0" divisionColor="#00000000" id="detail_listID" >
+			            			<Templates>
+			            				<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="" id="detailID" />
+			            			</Templates>
+   								</group>
+				            </group>
+							<item class="Line" size="fill,1" lineColor="#aaaaaa" lineWidth="1" background="clear" />
+			            </group>
+		            </group>
+		            
+	                <group size="fill,wrap" margin="20,20,20,0" >
+	                    <group size="pageWidth*65%,wrap" >
+	            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" label="客户声明：" />
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="保证所提供的资料属实，确认阅读并同意本单内容，如您本次办理了本单所列之优惠业务，则确认阅读并同意所载之协议。" />
+	                    </group>
+	                    
+	                    <group size="wrap,wrap" borderWidth="1" borderColor="#aaaaaa" gravity="right" margin="0,0,0,30" padding="1,1,1,1" >
+	                        <item class="Label" size="0,0" label="" id="signature_urlID" />
+	                    	<item class="Image" size="180,100" image="" hidden="true" id="signatureID" />
+            				<item class="Button" size="180,100" fontSize="18" fontColor="#aaaaaa" background="#ffffff" textAlignment="center" label="点击签名" hidden="false" id="btn_signatureID" onClick="onSignature(page)" />
+	                    </group>
+			        </group>
+	            </group>
+	            		        
+                <item class="Image" size="pageWidth*100%,pageWidth*10%" gravity="bottom" image="res://icon_protocol_end.png" />
+            </group>
+                
+            <group size="wrap,wrap" gravity="center" >
+                <item class="Image" size="pageWidth*25%,pageWidth*25%" image="res://bg_logo_4g.png" />
+            </group>
+       	</group>
+        
+	</page>
+</content>

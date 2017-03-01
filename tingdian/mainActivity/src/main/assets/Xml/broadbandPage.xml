@@ -1,0 +1,309 @@
+<!-- 家庭宽带   -->
+<content>
+    <page id="broadbandPageID" >
+        <lua name="broadbandPage.lua" url="res://broadbandPage.lua" />
+        
+        <group size="fill,fill" >
+        	<!-- 小左边 -->
+	        <group size="pageWidth*30%,fill" orientation="vertical" background="#efefef" >
+		        <group field="NavigationBar" size="fill,45" background="#8fc320" >
+		            <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="家庭宽带" />
+		            <item class="ImageButton" size="45,45" imageSize="20,20" gravity="left|center_vertical" margin="10,0,0,0" image="res://icon_back_white.png" onClick="goBack(page)" />
+		        </group>
+		        
+	            <group size="fill,wrap" orientation="vertical" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="10,10,10,0" padding="10,10,10,10" hidden="true" id="group_loginID" >
+	            	<group size="wrap,wrap" orientation="vertical" >
+		            	<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" label="" id="customer_mobileID" />
+		            	<group size="wrap,wrap" >
+		            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#aaaaaa" gravity="center_vertical" label="" id="customer_brandID" />
+		       				<item class="Line" size="1,10" lineWidth="1" lineColor="#aaaaaa" background="clear" gravity="center_vertical" margin="5,0,5,0" />
+		            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#aaaaaa" gravity="center_vertical" label="" id="customer_broadbandID" />
+		            	</group>
+			        </group>
+                </group>		        
+		        
+	            <group size="fill,wrap" orientation="vertical" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="10,10,10,0" padding="10,0,10,0" >
+	            	<item class="ImageButton" size="fill,50" imageSize="20,20" fontSize="16" fontColor="#000000" selectedFontColor="#8fc320" imageGravity="right" label="家宽办理" image="res://icon_go_grey.png" id="btn_dealID" onClick="onStep(page,this,'deal')" />
+       				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+	            	
+	            	<item class="ImageButton" size="fill,50" imageSize="20,20" fontSize="16" fontColor="#000000" selectedFontColor="#8fc320" imageGravity="right" label="进度查询" image="res://icon_go_grey.png" id="btn_scheduleID" onClick="onStep(page,this,'schedule')" />
+       				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+	        	</group>
+	        	
+				<item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="10,15,10,0" label="覆盖查询" onClick="onCoverQuery(page)" />
+	        </group>
+	        
+	        <!-- 大右边 -->
+       		<group size="fill,fill" orientation="absolute" >
+       		    
+       		    <!-- 家宽办理 -->
+       		    <group size="fill,fill" orientation="vertical" hidden="false" id="group_dealID" >
+	       		    <!-- 步骤1 -->
+	        		<group field="ScrollView" size="fill,fill" orientation="vertical" hidden="false" id="group_applyID" >
+		                <group size="fill,wrap" orientation="vertical" margin="pageWidth*5%,0,pageWidth*5%,0" >
+			                <group size="fill,45" margin="0,0,0,10" >
+		            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="家庭宽带" />
+					        </group>
+					        
+		           			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="地址录入：" />
+		           			
+				            <group size="fill,wrap" margin="0,10,0,0" >
+		            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="所属区域：" />
+				                <group size="fill,40" orientation="vertical" >
+					                <group class="DropList" size="fill,40" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="所属区域" id="areaID" onValueChange="onValueChange(page,this)" >
+									    <item value="" label="福田区" />
+									    <item value="" label="罗湖区" />
+									    <item value="" label="南山区" />
+									    <item value="" label="盐田区" />
+									    <item value="" label="宝安区" />
+									    <item value="" label="龙岗区" />
+									    <item value="" label="光明新区" />
+									    <item value="" label="龙华新区" />
+									    <item value="" label="坪山新区" />
+									    <item value="" label="大鹏新区" />
+					                </group>
+			                		<item class="Image" size="18,18" gravity="right|center_vertical" margin="0,0,5,0" image="res://icon_go_down.png" />
+				                </group>			            
+				            </group>
+				            
+				            <group size="fill,wrap" orientation="vertical" margin="0,10,0,0" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" margin="20%,0,0,0" label="（小区名称+空格+门牌号，例：嘉葆润金座  1911）" />
+					            <group size="fill,wrap" >
+			            			<item class="Label" size="20%,40" fontSize="16" fontColor="#000000" gravity="top" label="详细地址：" />
+					       			<group size="fill,wrap" orientation="vertical" >
+										<item class="TextField" size="fill,40" placeHolder="请输入关键字搜索" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" padding="5,0,5,0" label="" id="searchID" onTextChanged="onTextChanged(page,this)" />
+						       			<group field="ListTable" size="fill,wrap" orientation="vertical" divisionHeight="0" divisionColor="#00000000" background="#eeeeee" hidden="false" id="address_listID" >
+						       			    <Templates>
+						        			    <group size="fill,wrap" orientation="vertical" onClick="onAddressSelected(page,this)" >
+							            			<item class="Label" size="fill,40" fontSize="16" fontColor="#000000" selectedFontColor="#8fc320" margin="10,0,10,0" label="" id="address_nameID" />
+						       						<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+						        			    </group>
+						       			    </Templates>
+						       			</group>						
+					       			</group>						
+					            </group>				        
+				            </group>				        
+			                
+							<item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" disabledBackground="#aaaaaa" disabled="true" cornerRadius="3" textAlignment="center" margin="0,30,0,20" label="马上办理" id="btn_nowDealID" onClick="onNowDeal(page)" />
+				        </group>
+			        </group>
+				        
+	       		    <!-- 步骤2 -->
+		            <group field="ScrollView" size="fill,fill" orientation="vertical" hidden="true" id="group_apply2ID" >
+		                <group size="fill,wrap" orientation="vertical" margin="pageWidth*5%,0,pageWidth*5%,0" >
+			                <group size="fill,45" margin="0,0,0,10" >
+		            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="家庭宽带" />
+					        </group>
+					        
+			                <group size="fill,wrap" margin="0,0,0,20" hidden="true" id="group_dueID" >
+	    	       				<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="家宽到期时间：" />
+		           				<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="" id="due_timeID" />
+			                </group>
+			                		                
+					        <group size="fill,wrap" orientation="vertical" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="带宽选择：" />
+								<group field="GridTable" size="fill,wrap" orientation="vertical" numColumns="5" id="speed_listID" >
+						            <Templates >
+						                <group size="wrap,wrap" margin="0,5,0,10" onClick="onSpeedSelected(page,this)" >
+				   							<item class="Button" size="100,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" label="" id="speed_nameID" />
+						                </group>
+						            </Templates>
+					            </group>		            			
+				            </group>
+				            		                
+					        <group size="fill,wrap" orientation="vertical" margin="0,20,0,0" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="期限选择：" />
+								<group field="GridTable" size="fill,wrap" orientation="vertical" numColumns="5" id="term_listID" >
+						            <Templates >
+						                <group size="wrap,wrap" margin="0,5,0,10" onClick="onTermSelected(page,this)" >
+				   							<item class="Button" size="100,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" label="" id="term_nameID" />
+						                </group>
+						            </Templates>
+					            </group>		            			
+				            </group>
+				            		                
+					        <group size="fill,wrap" orientation="vertical" margin="0,20,0,0" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="融合宽带方案：" />
+			        			<group field="ListTable" size="fill,wrap" orientation="vertical" divisionHeight="0" divisionColor="#00000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="0,5,0,0" id="plan_listID" >
+			        			    <Templates>
+				        			    <group size="fill,60" orientation="vertical" onClick="onPlanSelected(page,this)" >
+				        			        <item class="Label" size="0,0" label="" id="plan_oldID" />
+				        			        <item class="Label" size="0,0" label="" id="plan_ID" />
+				        			        <item class="Label" size="0,0" label="" id="speed_ID" />
+				        			        <item class="Label" size="0,0" label="" id="free_ID" />
+				        			        <item class="Label" size="0,0" fontColor="red" label="" id="money_ID" />
+					            			<item class="Label" size="fill,wrap" fontSize="16" fontColor="#000000" selectedFontColor="#8fc320" gravity="center_vertical" margin="10,0,10,0" label="" id="plan_nameID" />
+				       						<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" gravity="bottom" />
+				        			    </group>
+			        			    </Templates>
+		            			</group>
+				            </group>
+				            
+				            <group size="fill,wrap" margin="0,30,0,20" >
+								<item class="Button" size="30%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" gravity="left" label="办理4G套餐" onClick="on4GMenu(page)" />
+								<item class="Button" size="50%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" gravity="right" label="办理" onClick="onDealWith(page)" />
+				            </group>		                
+	        			</group>
+	        		</group>
+	        		
+	       		    <!-- 步骤3 -->
+		            <group field="ScrollView" size="fill,fill" orientation="vertical" hidden="true" id="group_apply3ID" >
+		                <group size="fill,wrap" orientation="vertical" margin="pageWidth*5%,0,pageWidth*5%,0" >
+			                <group size="fill,45" margin="0,0,0,10" >
+		            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="家庭宽带" />
+					        </group>
+					        
+				            <group size="fill,wrap" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" margin="0,0,10,0" label="优惠价格:" />
+	       						<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="￥0.00" />
+				            </group>
+				            
+				            <group size="fill,wrap" margin="0,10,0,0" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" margin="0,0,10,0" label="实收价格:" />
+	       						<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="" id="price_ID" />
+				            </group>			                
+			                
+			                <group size="fill,wrap" orientation="vertical" margin="0,10,0,0" hidden="true" id="group_freeID" >
+					            <group size="fill,wrap" >
+			            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="支付方式：" />
+									<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" margin="0,0,10,0" label="POS机" id="btn_posID" onClick="onPaymentSelected(page,this,'pos')" />
+									<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="现金" id="btn_cashID" onClick="onPaymentSelected(page,this,'cash')" />
+					            </group>
+					            
+					            <group size="fill,wrap" margin="0,10,0,0" hidden="false" id="group_posID" >
+			            			<item class="Label" size="20%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="POS单号：" />
+		       						<item class="TextField" size="fill,40" placeHolder="请输入POS单号" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="" id="pos_numID" />
+					            </group>		                
+			                </group>
+				            
+					        <group size="fill,wrap" orientation="vertical" margin="0,40,0,0" >
+					            <group size="wrap,wrap" margin="0,0,0,10" >
+			            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="业务签单:" />
+			            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#8fc320" label="《业务受理单》" onClick="onProtocol(page)" />
+					            </group>
+					            <group size="135,95" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" >
+					                <item class="Label" size="0,0" label="" id="signature_urlID" />
+		            				<item class="Image" size="fill,fill" scaleType="centerInside" gravity="center" padding="1,1,1,1" image="" id="signatureID" />
+					            </group>
+				            </group>
+				            		        
+					        <group size="fill,wrap" orientation="vertical" margin="0,40,0,0" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" margin="0,0,0,10" label="证件拍照留存（最多5张）：" />
+								<group field="GridTable" size="425,wrap" orientation="vertical" numColumns="3" id="picture_listID" >
+						            <Templates >
+						                <group size="135,95" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="0,0,0,10" padding="2,2,2,2" onClick="onPicture(page,this)" >
+			            			        <item class="Label" size="0,0" label="" id="picture_typeID" />
+						                    <item class="Image" size="fill,fill" scaleType="centerCrop" gravity="center" image="" id="pictureID" />
+						                </group>
+						            </Templates>
+					            </group>				        
+				            </group>			        
+				            
+					        <group size="fill,wrap" orientation="vertical" margin="0,30,0,0" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" margin="0,0,0,10" label="备注:" />
+	           					<item class="TextField" size="fill,35" placeHolder="请输入备注" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" textAlignment="center" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,0,5,0" label="" id="remarkID" />
+				            </group>
+				            
+							<item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" disabledBackground="#aaaaaa" cornerRadius="3" textAlignment="center" margin="0,30,0,20" label="提交" id="btn_submitID" onClick="onPictureSubmit(page)" />
+			            </group>		        
+	                </group>
+	                
+	                <!-- 成功 -->
+	                <group size="fill,wrap" orientation="vertical" hidden="true" id="group_passID" >
+		                <group size="fill,45" margin="0,0,0,10" >
+	            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="家庭宽带" />
+				        </group>
+				        
+		                <item class="Image" size="pageWidth*20%,pageWidth*20%" gravity="center_horizontal" margin="0,30,0,30" image="res://icon_success.png" />
+	           			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center_horizontal" label="您已成功办理业务！" />
+	           			
+				        <group size="wrap,wrap" gravity="center_horizontal" margin="0,80,0,0" >
+							<item class="Button" hidden="true" size="pageWidth*18%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,0,pageWidth*3%,0" label="本次服务已完成" onClick="onCustomerQuit(page)" />
+							<item class="Button" size="pageWidth*30%,40" fontSize="14" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" label="返回客户服务" id="btn_broadbandID"onClick="backServicePage(page)"/>
+			            </group>           			
+			        </group>                
+	       		    
+	       		    <!-- 失败 -->
+	                <group size="fill,wrap" orientation="vertical" hidden="true" id="group_failID" >
+		                <group size="fill,45" margin="0,0,0,10" >
+	            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="家庭宽带" />
+				        </group>
+				        
+		                <item class="Image" size="pageWidth*20%,pageWidth*20%" gravity="center_horizontal" margin="0,30,0,30" image="res://icon_fail.png" />
+          				<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center_horizontal" margin="pageWidth*10%,20,pageWidth*10%,0" label="" id="fail_wordID" />
+	           				           			
+				        <group size="wrap,wrap" gravity="center_horizontal" margin="0,80,0,0" >
+							<item class="Button" size="pageWidth*18%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,0,pageWidth*3%,0" label="本次服务已完成" onClick="onCustomerQuit(page)" />
+							<item class="Button" size="pageWidth*18%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" label="重新进行" onClick="onAgain(page)" />
+			            </group>           			
+			        </group>		            
+                </group>
+                	            
+       		    <!-- 进度查询 -->
+                <group size="fill,fill" orientation="vertical" margin="pageWidth*5%,0,pageWidth*5%,0" hidden="true" id="group_apply4ID" >
+	                <group size="fill,45" margin="0,0,0,10" >
+            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="家庭宽带进度查询" />
+			        </group>
+			        
+		            <group size="fill,wrap" orientation="vertical" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="10,0,10,0" >
+            			<group size="fill,50" >
+	            			<item class="Label" size="25%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="订单号" />
+	            			<item class="Label" size="25%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="状态" />
+	            			<item class="Label" size="50%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="备注" />
+            			</group>
+	       				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+            			<group size="fill,40" >
+	            			<item class="Label" size="25%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="订单号" id="schedule_orderNumID" />
+	            			<item class="Label" size="25%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="状态" id="schedule_typeID" />
+	            			<item class="Label" size="50%,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="备注" id="schedule_remarkID" />
+            			</group>
+		        	</group>	                
+                </group>
+		                			               		    		    
+	            <group size="wrap,wrap" gravity="center" >
+	                <item class="Image" size="170,170" image="res://bg_logo.png" />
+	            </group>
+        	</group>       		    
+		</group>
+		
+		<PopupView id="pop_errorID" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" >
+			    <group size="300,wrap" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center" >
+			       	<item class="Label" size="fill,wrap" fontSize="16" fontColor="#aaaaaa" textAlignment="center" padding="10,20,10,20" label="" id="error_tipsID" />
+	   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+		           	<item class="Button" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="确定" onClick="onErrorSure(page)" />
+		    	</group>
+		    </group>
+		</PopupView>        
+		
+        <PopupView id="image_popupID" >
+	        <group size="fill,fill" shadow="false" background="#000000" >
+   				<group size="fill,fill" field="ImageSlider" interval="2000" pageControl="bottom" autoScroll="false" cycle="true" controlBackground="#55ffffff" selectedControlBackground="#ffffff" id="look_imageID" >
+					<Templates>
+					    <group size="fill,fill" >
+				            <item class="Image" size="fill,fill" gravity="center" id="big_imageID" onClick="onPictureDismiss(page,this)" />
+					    </group>
+					</Templates>	
+				</group>
+	        </group>
+        </PopupView>
+        
+		<PopupView id="tips_popupID" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" >
+			    <group size="300,200" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center" >
+			        <group size="fill,fill" orientation="vertical" padding="20,0,20,0" >
+			            <group size="wrap,wrap" orientation="vertical" gravity="center" >
+    	        			<item class="Label" size="wrap,wrap" fontSize="18" fontColor="#000000" gravity="center_horizontal" label="温馨提示：" />
+	            			<item class="Label" size="wrap,wrap" fontSize="18" fontColor="#000000" gravity="center_horizontal" margin="0,5,0,0" label="请先查询客户是否有套餐、跨品牌转换未生效的情况。如是二次办理宽带客户，请确认月套餐余额是否充足，是否有铁通方案互斥" />
+			            </group>
+			        </group>
+	   				<group size="fill,wrap" orientation="vertical" gravity="bottom" >
+		   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+			           	<item class="Button" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="好的" onClick="onTips(page)" />
+	   				</group>
+		    	</group>
+		    </group>
+		</PopupView>        
+        		
+	</page>
+</content>       		           		    

@@ -1,0 +1,256 @@
+<!-- 预存送   -->
+<content>
+    <page id="prestorePageID" >
+        <lua name="prestorePage.lua" url="res://prestorePage.lua" />
+        
+        <group size="fill,fill" >
+        	<!-- 小左边 -->
+	        <group size="pageWidth*30%,fill" orientation="vertical" background="#efefef" >
+		        <group field="NavigationBar" size="fill,45" background="#8fc320" >
+		            <item class="Label" size="wrap,wrap" fontSize="20" fontColor="#ffffff" gravity="center" label="预存送" />
+		            <item class="ImageButton" size="45,45" imageSize="20,20" gravity="left|center_vertical" margin="10,0,0,0" image="res://icon_back_white.png" onClick="goBack(page)" />
+		        </group>
+		        
+	            <group size="fill,wrap" orientation="vertical" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="10,10,10,10" padding="10,10,10,10" >
+	            	<group size="wrap,wrap" orientation="vertical" >
+		            	<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" label="" id="customer_mobileID" />
+		            	<group size="wrap,wrap" >
+		            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#aaaaaa" gravity="center_vertical" label="" id="customer_brandID" />
+		       				<item class="Line" size="1,10" lineWidth="1" lineColor="#aaaaaa" background="clear" gravity="center_vertical" margin="5,0,5,0" />
+		            		<item class="Label" size="wrap,wrap" fontSize="12" fontColor="#aaaaaa" gravity="center_vertical" label="" id="customer_realNameID" />
+		            	</group>
+			        </group>
+                </group>
+                
+ 	            <group size="fill,wrap" orientation="vertical" background="#ffffff" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="10,0,10,10" padding="10,10,10,10" >
+	            	<group size="fill,wrap" >
+	            		<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="账户状态：" />
+	            		<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="" id="customer_stopOnID" />
+			        </group>
+			        
+	            	<group size="fill,wrap" margin="0,10,0,0" >
+	            		<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="使用套餐：" />
+	            		<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="" id="customer_menuID" />
+			        </group>
+                </group>           
+	        </group>
+	        
+	        <!-- 大右边 -->
+       		<group size="fill,fill" orientation="absolute" >
+	            <group field="ScrollView" size="fill,fill" orientation="vertical" hidden="false" id="group_applyID" >
+	                <group size="fill,45" margin="0,0,0,10" >
+            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="预存送" />
+			        </group>
+			        
+	                <!-- 步骤1 -->
+	                <group size="fill,wrap" orientation="vertical" margin="pageWidth*5%,0,pageWidth*5%,0" >
+	                    <group size="fill,wrap" >
+			                <group size="pageWidth*18%,40" orientation="vertical" gravity="left" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" onClick="onSelected(page,this,'meal')" >
+		            			<item class="Label" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="选择套餐类型" id="mealID" />
+		                		<item class="Image" size="18,18" gravity="right|center_vertical" margin="5,0,5,0" image="res://icon_go_down.png" />
+			                </group>
+			                
+			                <group size="pageWidth*18%,40" orientation="vertical" gravity="center" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" onClick="onSelected(page,this,'business')" >
+		            			<item class="Label" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="选择业务类型" id="businessID" />
+		                		<item class="Image" size="18,18" gravity="right|center_vertical" margin="5,0,5,0" image="res://icon_go_down.png" />
+			                </group>
+			                <group size="pageWidth*18%,40" orientation="vertical" gravity="right" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" onClick="onSelected(page,this,'money')" >
+		            			<item class="Label" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="选择预存金额" id="moneyID" />
+		                		<item class="Image" size="18,18" gravity="right|center_vertical" margin="5,0,5,0" image="res://icon_go_down.png" />
+			                </group>
+	                    </group>
+	                    
+			            <group size="fill,wrap" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="0,10,0,0" >
+		                    <item class="TextField" size="fill,40" placeHolder="请输入关键字" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" textAlignment="center" gravity="left" id="search_wordID" />
+           					<item class="Button" size="100,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" gravity="right" label="搜索" onClick="onSearch(page)" />
+			            </group>   
+			            
+						<group size="fill,wrap" margin="0,20,0,0" >
+							<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="生效时间：" />
+							<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" margin="0,0,10,0" label="默认生效" onClick="onStartSelected(page,this,'freedom')" selected="true" id="default_timeID"/>
+							<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" margin="0,0,10,0" label="下月生效" onClick="onStartSelected(page,this,'next')" id="btn_nextMonthID"/>
+							<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="立即生效" id="btn_startNowID" onClick="onStartSelected(page,this,'now')" />
+					    </group>
+					    
+						<group size="fill,wrap" margin="0,10,0,0" >
+							<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="已选生效时间：" />
+							<item class="Label" size="0,0" label="" id="effective_timeID" />
+							<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="" id="selected_timeID" />
+						</group>			            
+			        
+            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="策略列表：" margin="0,20,0,10" />
+				        <group field="ListTable" size="fill,wrap" orientation="vertical" divisionColor="#00000000" divisionHeight="0" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" id="strategy_listID" >
+				            <Templates>
+					            <group size="fill,wrap" orientation="vertical" margin="10,0,10,0" onClick="onMealSelected(page,this)" >
+					                <group size="fill,40" margin="0,10,0,10" >
+					                    <item class="Label" size="0,0" label="" id="strategy_ID" />
+					                    <item class="Label" size="0,0" label="" id="effectType_ID" />
+		            					<item class="Image" size="20,20" gravity="left|center_vertical" image="res://icon_circle_not.png" selectedImage="res://icon_circle_yes.png" />
+		            					<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" selectedFontColor="#8fc320" maxLines="2" gravity="center_vertical" margin="10,0,0,0" label="" id="explainID" />
+					                </group>
+				       				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+					            </group>
+				            </Templates>
+			            </group>
+			            		        
+						<item class="Button" size="fill,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,30,0,20" label="下一步" onClick="onNextStep(page)" />
+		            </group>
+	            </group>
+	                		            
+                <!-- 步骤2 -->
+	            <group field="ScrollView" size="fill,wrap" orientation="vertical" hidden="true" id="group_apply2ID" >
+	                <group size="fill,45" margin="0,0,0,10" >
+            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="预存送" />
+		            	<item class="ImageButton" size="45,45" imageSize="20,20" gravity="left|center_vertical" margin="10,0,0,0" image="res://icon_back_black.png" onClick="onLastBack(page)" />
+			        </group>
+			        	                
+		            <group size="fill,wrap" orientation="vertical" margin="pageWidth*5%,0,pageWidth*5%,0" >
+			            <group size="fill,wrap" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="策略名称：" />
+       						<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="" id="pay_nameID" />
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="优惠费用：" />
+       						<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="" id="pay_discountID" />
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="实收费用：" />
+       						<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#aaaaaa" gravity="center_vertical" label="" id="pay_actualID" />
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="支付方式：" />
+							<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" margin="0,0,10,0" label="POS机" id="btn_posID" onClick="onPaymentSelected(page,this,'pos')" />
+							<item class="Button" size="20%,40" fontSize="16" fontColor="#000000" selectedFontColor="#ffffff" background="#ffffff" selectedBackground="#8fc320" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="现金" id="btn_cashID" onClick="onPaymentSelected(page,this,'cash')" />
+			            </group>
+			            
+			            <group size="fill,wrap" margin="0,10,0,0" hidden="false" id="group_posID" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" gravity="center_vertical" label="POS单号：" />
+       						<item class="TextField" size="fill,40" placeHolder="请输入POS单号" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#aaaaaa" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" textAlignment="center" label="" id="pos_numID" />
+			            </group>
+			            
+				        <group size="fill,wrap" orientation="vertical" margin="0,40,0,0" >
+				            <group size="wrap,wrap" margin="0,0,0,10" >
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" label="业务签单:" />
+		            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#8fc320" label="《业务受理单》" onClick="onProtocol(page)" />
+				            </group>
+				            <group size="135,95" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" >
+				                <item class="Label" size="0,0" label="" id="signature_urlID" />
+	            				<item class="Image" size="fill,fill" scaleType="centerInside" gravity="center" padding="1,1,1,1" image="" id="signatureID" />
+				            </group>
+			            </group>
+			            		        
+				        <group size="fill,wrap" orientation="vertical" margin="0,40,0,0" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" margin="0,0,0,10" label="证件拍照留存（最多5张）：" />
+							<group field="GridTable" size="425,wrap" orientation="vertical" numColumns="3" id="picture_listID" >
+					            <Templates >
+					                <group size="135,95" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="0,0,0,10" padding="2,2,2,2" onClick="onPicture(page,this)" >
+		            			        <item class="Label" size="0,0" label="" id="picture_typeID" />
+					                    <item class="Image" size="fill,fill" scaleType="centerCrop" gravity="center" image="" id="pictureID" />
+					                </group>
+					            </Templates>
+				            </group>				        
+			            </group>			        
+			            
+				        <group size="fill,wrap" orientation="vertical" margin="0,30,0,0" >
+	            			<item class="Label" size="wrap,wrap" fontSize="16" fontColor="#000000" margin="0,0,0,10" label="备注:" />
+           					<item class="TextField" size="fill,35" placeHolder="请输入备注" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" textAlignment="center" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" padding="5,0,5,0" label="" id="remarkID" />
+			            </group>
+			            
+						<item class="Button" size="fill,40" fontSize="20" fontColor="#ffffff" background="#8fc320" disabledBackground="#aaaaaa" cornerRadius="3" textAlignment="center" margin="0,30,0,20" label="提交" id="btn_submitID" onClick="onPictureSubmit(page)" />
+		            </group>		            
+	            </group>		            
+		            
+	            <!-- 办理成功 -->
+	            <group size="fill,wrap" orientation="vertical" hidden="true" id="group_passID" >
+	                <group size="fill,45" margin="0,0,0,10" >
+            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="预存送" />
+			        </group>
+			        		            
+	                <item class="Image" size="pageWidth*20%,pageWidth*20%" gravity="center_horizontal" margin="0,30,0,30" image="res://icon_success.png" />
+           			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center_horizontal" label="已成功办理优惠合约！" />
+           			
+			        <group size="wrap,wrap" gravity="center_horizontal" margin="0,80,0,0" >
+						<item class="Button" hidden="true" size="pageWidth*18%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,0,pageWidth*3%,0" label="本次服务已完成" onClick="onCustomerQuit(page)" />
+						<item class="Label"  size="0,0" label="" id="order_NumID" />
+						<item class="Button" hidden="true" size="pageWidth*18%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,0,pageWidth*3%,0" label="一键回退" onClick="onFallback(page)" />
+						<item class="Button" size="pageWidth*30%,40" fontSize="14" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" label="返回客户服务" id="btn_prestoreID"onClick="backServicePage(page)"/>
+		            </group>		        			
+		        </group>                
+	       		    
+                <!-- 办理失败 -->
+	            <group size="fill,wrap" orientation="vertical" hidden="true" id="group_failID" >
+	                <group size="fill,45" margin="0,0,0,10" >
+            			<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center" label="预存送" />
+			        </group>
+			        	                
+	                <item class="Image" size="pageWidth*20%,pageWidth*20%" gravity="center_horizontal" margin="0,30,0,30" image="res://icon_fail.png" />
+       				<item class="Label" size="wrap,wrap" fontSize="20" fontColor="#000000" gravity="center_horizontal" margin="pageWidth*10%,20,pageWidth*10%,0" label="办理优惠合约失败！" id="fail_wordID" />
+           						        
+			        <group size="wrap,wrap" gravity="center_horizontal" margin="0,80,0,0" >
+						<item class="Button" size="pageWidth*18%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" margin="0,0,pageWidth*3%,0" label="本次服务已完成" onClick="onCustomerQuit(page)" />
+						<item class="Button" size="pageWidth*18%,40" fontSize="16" fontColor="#ffffff" background="#8fc320" cornerRadius="3" textAlignment="center" label="重新进行" onClick="onAgain(page)" />
+		            </group> 	           			
+                </group>
+                
+	            <group size="wrap,wrap" gravity="center" >
+	                <item class="Image" size="170,170" image="res://bg_logo.png" />
+	            </group>
+        	</group>
+        		        
+        </group>
+        
+		<PopupView id="pop_listView">
+		    <group size="fill,wrap" orientation="vertical" gravity="bottom" >
+		        <item class="Label" size="fill,wrap" fontSize="18" fontColor="#999999" background="#333333" textAlignment="center" padding="0,7,0,7" label="" id="spinner_typeID" />
+			    <group field="ListTable" size="fill,160" orientation="vertical" background="#666666" divisionHeight="0" divisionColor="#00000000" id="selected_listID" >
+			        <Templates>
+			            <group size="fill,wrap" orientation="vertical" >
+				            <group size="fill,wrap" background="#666666" pressBackground="#f1aa32" padding="0,7,0,7" onClick="onSpinnerSelected(page,this)" >
+					           	<item class="Label" size="fill,wrap" fontSize="16" fontColor="#999999" pressFontColor="#000000" textAlignment="center" label="" id="spinner_nameID" />
+				            </group>
+			   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#565656" background="clear" />
+			            </group>
+			        </Templates>
+		    	</group>
+		    </group>
+		</PopupView>
+		
+		<PopupView id="pop_errorID" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" >
+			    <group size="300,wrap" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center" >
+			       	<item class="Label" size="fill,wrap" fontSize="16" fontColor="#aaaaaa" textAlignment="center" padding="10,20,10,20" label="" id="error_wordID" />
+	   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+		           	<item class="Button" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="确定" onClick="onErrorSure(page)" />
+		    	</group>
+		    </group>
+		</PopupView>
+		
+        <PopupView id="image_popupID" >
+	        <group size="fill,fill" shadow="false" background="#000000" >
+   				<group size="fill,fill" field="ImageSlider" interval="2000" pageControl="bottom" autoScroll="false" cycle="true" controlBackground="#55ffffff" selectedControlBackground="#ffffff" id="look_imageID" >
+					<Templates>
+					    <group size="fill,fill" >
+				            <item class="Image" size="fill,fill" gravity="center" id="big_imageID" onClick="onPictureDismiss(page,this)" />
+					    </group>
+					</Templates>	
+				</group>
+	        </group>
+        </PopupView>		
+		
+		<PopupView id="reason_popupID" >
+		    <group size="fill,fill" orientation="vertical" background="#bb000000" >
+			    <group size="300,200" orientation="vertical" background="#ffffff" cornerRadius="3" gravity="center" >
+            		<item class="TextView" size="fill,120" placeHolder="请输入回退原因" placeHolderColor="#aaaaaa" fontSize="16" fontColor="#000000" borderWidth="1" borderColor="#aaaaaa" cornerRadius="3" margin="10,20,10,0" padding="5,5,5,5" label="" id="reasonID" />
+	   				<group size="fill,wrap" orientation="vertical" gravity="bottom" >
+		   				<item class="Line" size="fill,1" lineWidth="1" lineColor="#aaaaaa" background="clear" />
+			           	<item class="Button" size="fill,40" fontSize="16" fontColor="#000000" textAlignment="center" label="确定回退" onClick="onFallbackSure(page)" />
+	   				</group>
+		    	</group>
+		    </group>
+		</PopupView>		
+        
+	</page>
+</content>

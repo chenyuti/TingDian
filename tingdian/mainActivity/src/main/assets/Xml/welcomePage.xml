@@ -1,0 +1,11 @@
+<!-- 启动页   -->
+<content>
+    <page id="welcomePageID" >
+        <lua name="welcomePage.lua" url="res://welcomePage.lua" />
+
+        <group size="fill,fill" >
+            <item class="Image" size="fill,fill" scaleType="fitXY" image="res://bg_welcome.png" />
+		</group>
+	                
+	</page>
+</content>

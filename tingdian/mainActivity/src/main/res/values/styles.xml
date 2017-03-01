@@ -1,0 +1,14 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    
+    <style name="Theme.AppStartLoad" parent="android:Theme">  
+    	<item name="android:windowNoTitle">true</item> 
+	</style>
+	
+    <style name="BaseTheme" parent="android:Theme.Light.NoTitleBar" />
+
+</resources>

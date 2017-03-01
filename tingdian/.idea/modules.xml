@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mainActivity/mainActivity.iml" filepath="$PROJECT_DIR$/mainActivity/mainActivity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tingdian.iml" filepath="$PROJECT_DIR$/tingdian.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uIEngineR41/uIEngineR41.iml" filepath="$PROJECT_DIR$/uIEngineR41/uIEngineR41.iml" />
+    </modules>
+  </component>
+</project>

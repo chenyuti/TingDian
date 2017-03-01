@@ -1,0 +1,18 @@
+<config>
+   <!-- 线上 -->
+    <!-- <serverUrl> http://120.198.246.66:8886/SCSS</serverUrl> -->
+    <!-- 彩讯测试	服务器 -->
+    <!--<serverUrl> http://121.15.167.225:1500/SCSS</serverUrl>	-->
+    <!-- 移动测试	服务器 -->
+     <serverUrl> http://120.198.246.66:8886/SCSS_test</serverUrl>
+     <!-- 个人服务器 -->
+   <!--  <serverUrl> http://192.168.43.97:8080/SCSS</serverUrl>	 -->
+    <multiTemplatesURl></multiTemplatesURl>
+	<templateUrl></templateUrl>
+	<appUpdateUrl></appUpdateUrl>
+	<configUpdateUrl></configUpdateUrl>
+	<dataPath>DataSource</dataPath>
+	<imagesPath>Images</imagesPath>
+	<luaPath>Lua</luaPath>
+	<uiPath>Xml</uiPath>
+</config>
